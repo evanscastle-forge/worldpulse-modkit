@@ -1386,7 +1386,9 @@ CHANGES:
 3. Read the report:
    - `NEVER <id>`: the def did not show up. Common causes: an animal no biome lists, a crop with
      `minTemp` above the landing site's climate, a recipe whose material never exists, a building
-     without `costItem`. Fix and re-run. For a biome-specific mod, set `"biome"` in expect.json.
+     without `costItem`, or a crop that doesn't ripen within the test's `days` (`growTicks` / 6000 is
+     the days at full speed; nights, cold and poor soil make it slower, so allow about twice that).
+     Fix and re-run. For a biome-specific mod, set `"biome"` in expect.json.
    - deaths or breaks you did not intend: the mod is too harsh (damage, manhuntChance, mood).
    - `FAIL the game failed on tick ...`: a crash; report it to the game with the mod attached.
 4. Compare every number you set with `docs/balance.md`. Anything far outside the core range needs a

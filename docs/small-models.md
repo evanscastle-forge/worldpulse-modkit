@@ -14,9 +14,10 @@ You don't need a top model or a coding agent. Pick the way that matches what you
 1. Start a new chat. Attach or paste `bundle/modding-small.md`.
 2. Paste `prompts/01-design.md` with your idea filled in. Answer its questions. It ends with a short
    spec; save it as `NOTES.md` in your mod folder (`python3 tools/modkit.py new MYMOD` makes the folder).
-3. Paste `prompts/02-write-defs.md`. Save each JSON block it gives into the file it names.
+3. Paste `prompts/02-write-defs.md`. Copy its whole reply into a file (say `reply.txt`) and run
+   `python3 tools/modkit.py save-reply reply.txt`: every file it wrote lands in `mods/MYMOD/`.
 4. Run `python3 tools/modkit.py validate MYMOD` and paste the whole output into the chat with
-   `prompts/03-fix.md`. Repeat until it says OK. The messages tell the model exactly what to change.
+   `prompts/03-fix.md`; save its reply the same way. Repeat until it says OK. The messages tell the model exactly what to change.
 5. For art, `prompts/04-sprite.md`; check with `modkit sprite ... --png` and attach the picture.
 6. `prompts/05-review.md` for a last check, then `modkit test` and play it.
 
@@ -27,7 +28,7 @@ You don't need a top model or a coding agent. Pick the way that matches what you
   avoids most mistakes: the right fields, the right types, working sprites.
 - **The validator is the teacher.** Its messages name the file, the def and the field, say what is
   wrong and how to fix it. Paste them back verbatim.
-- **Smaller bundle, smaller mistakes.** `modding-small.md` (~6k tokens) has the rules, the main field
+- **Smaller bundle, smaller mistakes.** `modding-small.md` (~11k tokens) has the rules, the main field
   tables and one example per kind. Use the full bundle when the model can hold it.
 
 ## What we have measured

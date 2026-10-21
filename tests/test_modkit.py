@@ -71,6 +71,18 @@ class CommandTests(unittest.TestCase):
         items = modkit.load_jsonc(self.tmp / "hats" / "defs" / "items.json")
         self.assertEqual("hats.item.fur_hat", items[0]["id"])
 
+    def test_save_reply_writes_mod_files_only_and_expect_is_checked(self):
+        modkit.main(["new", "pk"])
+        reply = self.tmp / "reply.txt"
+        reply.write_text("Here you go.\n\nmods/pk/defs/items.json\n```json\n[{\"id\": \"pk.item.pumpkin\", \"kind\": \"item\", \"nutrition\": 250, \"raw\": true}]\n```\n\n"
+                         "mods/pk/tests/expect.json\n```json\n{\"expect\": [{\"metric\": \"sen\", \"id\": \"pk.item.pumpkin\"}]}\n```\n\n"
+                         "mods/../tools/evil.py\n```\nx\n```\n")
+        self.assertEqual(0, modkit.main(["save-reply", str(reply)]))
+        self.assertTrue((self.tmp / "pk" / "defs" / "items.json").exists())
+        self.assertFalse((ROOT / "tools" / "evil.py").exists())
+        r = modkit.validate(self.tmp / "pk")
+        self.assertIn("did you mean 'seen'", " ".join(i["message"] for i in r["issues"] if i["file"] == "tests/expect.json"))
+
     def test_sprite_png(self):
         out = self.tmp / "s.png"
         self.assertEqual(0, modkit.main(["sprite", "core.sprite.body", "--png", str(out), "--scale", "2", "--over", "core.sprite.body"]))

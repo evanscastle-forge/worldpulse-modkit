@@ -231,6 +231,190 @@ Smallest version that would help: <e.g. "a building use 'well' that colonists dr
 ```
 
 ---
+<!-- file: workflows/idea-to-spec.md -->
+
+# Workflow: idea to spec
+
+**Input:** an idea. **Output:** a spec in the mod's `NOTES.md` the person has agreed to.
+
+1. Restate the idea in one or two sentences.
+2. Map every part of the idea to a kind (`docs/concepts.md`). Check each against `docs/limits.md`.
+   Parts that need a game update go under "Not possible yet" with the reason.
+3. For each def decide: new (id `MODID.kind.name`) or an override of a core id (find it in
+   `docs/ids.md`). Prefer new defs; override only when the idea is to change core.
+4. Find the closest core def to copy for each new def (`reference/core/`).
+5. Ask the person at most three questions, only where the answer changes what you build (for example
+   "should the hat need leather or cloth?"). Offer a default for each.
+6. Write the spec into NOTES.md:
+
+```markdown
+# <Mod name>
+<one paragraph: what the player will notice>
+
+## Defs
+| id | kind | copy of | purpose |
+| --- | --- | --- | --- |
+| furhats.item.fur_hat | item | core.item.tuque | warm hat from leather |
+
+## Overrides
+| id | why |
+| --- | --- |
+
+## Not possible yet
+- <part of the idea> — <limit from docs/limits.md>
+
+## Numbers outside docs/balance.md
+- <field = value> — <why>
+```
+
+*Done when:* the person says the spec is right (or, if you can't ask, it covers the whole idea).
+
+---
+<!-- file: workflows/fix-validation-errors.md -->
+
+# Workflow: fix validation errors
+
+**Input:** the output of `python3 tools/modkit.py validate MODID`. **Output:** a clean run.
+
+Each line is `SEVERITY file def field: message`. Work top to bottom; errors come first.
+
+| message says | do this |
+| --- | --- |
+| `unknown field ... (did you mean 'x'?)` | rename the field to `x`. No suggestion: the field does not exist; remove it, or see `docs/limits.md` |
+| `field names are case-sensitive: write "x"` | fix the capitalisation |
+| `expected a whole number, found text "12"` | remove the quotes: `12` |
+| `must be a whole number` | no decimals: `0.5` becomes a whole number in the field's unit |
+| `no item 'x' (did you mean 'y'?)` | use `y`, or define `x` in the mod |
+| `'x' is a plant, but this field needs a item` | point at a def of the right kind |
+| `sprite 'x' is 16px; this field needs a 32px sprite` | use or draw a sprite of the right size |
+| `has 15 rows` / `row 3 is 17 characters` | add or remove characters so the grid is exactly size × size |
+| `row 2 uses 'q' not in the palette` | add `"q": "#rrggbb"` to the palette, or change the pixel |
+| `no "kind"` / `unknown kind` | add the right `"kind"` |
+| `id defined twice` | rename one |
+| `missing required field` | add it (see the field table) |
+| `will never appear` / `nothing makes this item` | connect it (biome table, recipe, harvestItem...) as the message says |
+| `new ids should start with the mod id` | rename the id (and everything that points at it) |
+| `overrides a def` (NOTE) | fine if intended: list it in NOTES.md "Overrides" |
+
+Re-run validate after each batch of fixes. If the same error comes back twice, re-read the field
+table in `docs/api/` for that kind instead of guessing.
+
+*Done when:* `... 0 errors ... - OK`, and every remaining warning is fixed or explained in NOTES.md.
+
+---
+<!-- file: workflows/review.md -->
+
+# Workflow: review
+
+**Input:** a mod. **Output:** `APPROVE` or `CHANGES:` with a numbered list. Use this on your own
+work before reporting it done, and when asked to review someone else's mod.
+
+Check each item. Write down every failure.
+
+1. `python3 tools/modkit.py validate MODID` shows 0 errors.
+2. Every warning is fixed or explained in NOTES.md.
+3. Every new id starts with `MODID.` and says what it is (`furhats.item.fur_hat`, not `furhats.item.x1`).
+4. Every override (the validator lists them) is in NOTES.md "Overrides" with a reason, and copies
+   every field of the original that it doesn't mean to change (compare with `reference/core/`).
+5. Numbers are within `docs/balance.md` ranges, or NOTES.md says why not.
+6. Sprites: the right size for their use; outlined; `$main` where the def's color should show;
+   worn layers line up with the body (preview them).
+7. `tests/expect.json` has a `seen` check for every new item, plant, animal and building, and
+   `modkit test` passes (or the game was not available, and that is said).
+8. Nothing claims behaviour the game doesn't have (`docs/limits.md`): no fields that "should" do
+   something, no new thoughts expected to trigger, no labels promising effects that aren't there.
+9. `mod.json` has a name, version, description and `modApi` equal to `game.json`'s.
+10. README.md tells a player what the mod adds and what it overrides.
+
+Answer exactly:
+
+```
+APPROVE
+```
+or
+```
+CHANGES:
+1. <file> <def>: <what is wrong> -> <what to do>
+2. ...
+```
+
+---
+<!-- file: docs/testing.md -->
+
+# Testing a mod
+
+Two layers. Run the first after every change; run the second before you call the mod done.
+
+## Layer 1: `modkit validate` (no game needed)
+
+```
+python3 tools/modkit.py validate furhats
+```
+
+Checks against the schemas and the core content in this toolkit: unknown or misspelled fields, wrong
+value types, ids that don't exist (with a "did you mean"), the wrong kind or sprite size, sprite grids,
+apparel without a worn layer, and things the game will never use (an animal no biome lists, an item
+nothing makes, a new thought). Every message says how to fix it. Errors must be fixed; warnings
+should be fixed or explained in NOTES.md; notes are information.
+
+If the game is installed and found (`modkit doctor`), `validate` also runs the game's own check.
+
+## Layer 2: `modkit test` (needs the game)
+
+```
+python3 tools/modkit.py test furhats
+```
+
+Runs the game's `modtool validate`, then `modtool simulate`: the game plays your mod in an
+unattended colony for some days on a few seeds, and reports
+
+- whether each of your defs **showed up** (an item existed, a plant grew, an animal appeared, a
+  building was built, a thought was felt), the most at once, and the first day;
+- deaths, breakdowns and mood, so you can see if you made the game too hard or too easy;
+- crashes, if any.
+
+After landing, the simulated colony is given a starter setup for your mod: your buildings and the
+stations of your recipes are placed, your recipes get bills of 2, your sowable plants get growing
+zones, and your animals are hunted when they appear. Nothing else is done for it.
+
+### tests/expect.json
+
+What must hold for the mod to pass. `modkit test` (and the game) read it.
+
+```json
+{
+  "days": 10,
+  "seeds": [1, 2, 3],
+  "biome": "core.biome.tundra",
+  "expect": [
+    { "metric": "seen", "id": "furhats.item.fur_hat", "min": 2 },
+    { "metric": "deaths", "max": 0 },
+    { "metric": "moodAvg", "min": 40 }
+  ]
+}
+```
+
+| metric | value | default check |
+| --- | --- | --- |
+| `seen` (needs `id`) | how many seeds it showed up in | at least 1 |
+| `peak` (needs `id`) | the most of it at once, best seed | at least 1 |
+| `deaths` | colonist deaths, worst seed | |
+| `alive` | colonists alive at the end, worst seed | |
+| `breaks` | breakdowns, worst seed | |
+| `moodAvg` | average mood, worst seed | |
+| `moodMin` | lowest mood, worst seed | |
+
+`biome` lands every seed in that biome, for mods about one place (the test makes that biome the best
+landing site in its own copy of the content; your mod is not changed).
+`days`, `seeds` and `biome` can be overridden: `modkit test furhats --days 3 --seeds 1`.
+
+## Layer 3: play it
+
+`python3 tools/modkit.py install furhats` copies the mod into the game's mods folder and reloads a
+running game; `restore`/`uninstall` undo it. Sprites, the ID card and how it *feels* are only
+checked by playing.
+
+---
 <!-- file: docs/api/item.md -->
 
 # item
@@ -613,3 +797,96 @@ Every mod has one, in its root folder. The game reads `loadAfter`; the rest is f
 
 A mod may also carry `flags.json`: `{ "name": true }`. Flags switch game features on and off; the
 game only reads the flags it knows (`core.travel` today). A mod rarely needs one.
+
+---
+<!-- file: docs/balance.md -->
+
+# Balance: numbers from the game
+
+Pick numbers near what the game already uses. These tables come from `reference/core/` (regenerated
+by `modkit bundle`), so they match the pinned game version. Going outside a range is fine when you
+mean it: write why in NOTES.md, then check it with `modkit test`.
+
+Rules of thumb:
+- One in-game day is 6000 ticks. A crop that takes 4 days has `growTicks` about 24000.
+- A colonist uses about 700 food a day (the food need runs 0..1000). A cooked meal is 900; raw
+  food is 50 per unit.
+- Apparel: a tunic is `cold` 3; a parka is `cold` 18. The leather vest's `armor` 25 is strong.
+- Predators: `damage` 9 with `manhuntChance` 6 (the wolf) is already dangerous to a small colony.
+
+**plant** (12 in core)
+
+| field | min | typical | max | default |
+| --- | --- | --- | --- | --- |
+| `growTicks` | 12000 | 30000 | 100000 | 30000 |
+| `harvestYield` | 8 | 11 | 12 | 0 |
+| `woodYield` | 10 | 26 | 32 | 0 |
+| `nutrition` | 150 | 250 | 260 | 0 |
+| `minTemp` | -8 | 2 | 8 | 1 |
+| `maxTemp` | 55 | 55 | 55 | 45 |
+| `workTicks` | 30 | 60 | 200 | 60 |
+
+**item** (16 in core)
+
+| field | min | typical | max | default |
+| --- | --- | --- | --- | --- |
+| `nutrition` | 50 | 50 | 900 | 0 |
+| `stackLimit` | 1 | 75 | 75 | 75 |
+| `cold` | 0 | 4 | 18 | 0 |
+| `heat` | -4 | 1 | 6 | 0 |
+| `armor` | 25 | 25 | 25 | 0 |
+
+**building** (13 in core)
+
+| field | min | typical | max | default |
+| --- | --- | --- | --- | --- |
+| `costCount` | 5 | 25 | 50 | 0 |
+| `workTicks` | 100 | 200 | 320 | 100 |
+| `heat` | -40 | 15 | 60 | 0 |
+
+**animal** (9 in core)
+
+| field | min | typical | max | default |
+| --- | --- | --- | --- | --- |
+| `maxHealth` | 20 | 75 | 170 | 50 |
+| `damage` | 2 | 8 | 16 | 5 |
+| `attackTicks` | 40 | 45 | 55 | 50 |
+| `moveTicks` | 4 | 4 | 5 | 6 |
+| `meatYield` | 8 | 30 | 80 | 20 |
+| `leatherYield` | 4 | 20 | 40 | 0 |
+| `size` | 40 | 70 | 110 | 70 |
+
+**thought** (22 in core)
+
+| field | min | typical | max | default |
+| --- | --- | --- | --- | --- |
+| `mood` | -15 | -4 | 10 | 0 |
+| `ticks` | 120 | 600 | 18000 | 6000 |
+
+**weather** (6 in core)
+
+| field | min | typical | max | default |
+| --- | --- | --- | --- | --- |
+| `weight` | 5 | 25 | 50 | 10 |
+| `tempOffset` | -3 | -2 | -1 | 0 |
+| `growth` | 50 | 90 | 125 | 100 |
+
+---
+<!-- file: docs/ids.md -->
+
+# Core ids
+
+Every id in the game's core content, by kind, for reference and reuse (point at core sprites,
+materials and stations freely). Regenerated by `modkit bundle`.
+
+- **animal**: `core.animal.bear`, `core.animal.boar`, `core.animal.capybara`, `core.animal.cougar`, `core.animal.deer`, `core.animal.elk`, `core.animal.hare`, `core.animal.ibex`, `core.animal.wolf`
+- **biome**: `core.biome.arid_shrubland`, `core.biome.boreal_forest`, `core.biome.desert`, `core.biome.ice_sheet`, `core.biome.ocean`, `core.biome.sea_ice`, `core.biome.swamp`, `core.biome.temperate_forest`, `core.biome.temperate_grassland`, `core.biome.tropical_rainforest`, `core.biome.tundra`
+- **building**: `core.building.bed`, `core.building.campfire`, `core.building.cooler`, `core.building.door`, `core.building.fireplace`, `core.building.granite`, `core.building.limestone`, `core.building.marble`, `core.building.sandstone`, `core.building.steel_ore`, `core.building.tailor_bench`, `core.building.wall_stone`, `core.building.wall_wood`
+- **item**: `core.item.berries`, `core.item.cloth`, `core.item.leather`, `core.item.leather_vest`, `core.item.meal`, `core.item.meat`, `core.item.parka`, `core.item.potato`, `core.item.rice`, `core.item.steel`, `core.item.stone`, `core.item.sun_hat`, `core.item.trousers`, `core.item.tunic`, `core.item.tuque`, `core.item.wood`
+- **plant**: `core.plant.berry_bush`, `core.plant.bush`, `core.plant.cactus`, `core.plant.cotton`, `core.plant.grass`, `core.plant.oak`, `core.plant.pine`, `core.plant.poplar`, `core.plant.potato`, `core.plant.rice`, `core.plant.tall_grass`, `core.plant.teak`
+- **roof**: `core.roof.built`, `core.roof.rock`
+- **sprite**: `core.sprite.animal.bear`, `core.sprite.animal.boar`, `core.sprite.animal.canine`, `core.sprite.animal.deer`, `core.sprite.animal.feline`, `core.sprite.animal.small`, `core.sprite.body`, `core.sprite.building.bed`, `core.sprite.building.campfire`, `core.sprite.building.cooler`, `core.sprite.building.door`, `core.sprite.building.fireplace`, `core.sprite.building.tailor_bench`, `core.sprite.hair.bun`, `core.sprite.hair.long`, `core.sprite.hair.shaved`, `core.sprite.hair.short`, `core.sprite.icon.cha`, `core.sprite.icon.con`, `core.sprite.icon.dex`, `core.sprite.icon.int`, `core.sprite.icon.str`, `core.sprite.icon.wis`, `core.sprite.item.berries`, `core.sprite.item.cloth`, `core.sprite.item.leather`, `core.sprite.item.leather_vest`, `core.sprite.item.meal`, `core.sprite.item.meat`, `core.sprite.item.parka`, `core.sprite.item.potato`, `core.sprite.item.rice`, `core.sprite.item.steel`, `core.sprite.item.stone`, `core.sprite.item.sun_hat`, `core.sprite.item.trousers`, `core.sprite.item.tunic`, `core.sprite.item.tuque`, `core.sprite.item.wood`, `core.sprite.portrait.hair.bun`, `core.sprite.portrait.hair.long`, `core.sprite.portrait.hair.shaved`, `core.sprite.portrait.hair.short`, `core.sprite.portrait.head`, `core.sprite.portrait.leather_vest`, `core.sprite.portrait.parka`, `core.sprite.portrait.sun_hat`, `core.sprite.portrait.tunic`, `core.sprite.portrait.tuque`, `core.sprite.tree.broadleaf`, `core.sprite.tree.pine`, `core.sprite.wear.leather_vest`, `core.sprite.wear.parka`, `core.sprite.wear.sun_hat`, `core.sprite.wear.trousers`, `core.sprite.wear.tunic`, `core.sprite.wear.tuque`
+- **terrain**: `core.terrain.deep_water`, `core.terrain.gravel`, `core.terrain.ice`, `core.terrain.marsh`, `core.terrain.rich_soil`, `core.terrain.rough_stone`, `core.terrain.sand`, `core.terrain.shallow_water`, `core.terrain.soil`
+- **thought**: `core.thought.ate_meal`, `core.thought.ate_raw`, `core.thought.catharsis`, `core.thought.cold`, `core.thought.colonist_died`, `core.thought.exhausted`, `core.thought.freezing`, `core.thought.grating_company`, `core.thought.hot`, `core.thought.hungry`, `core.thought.pain`, `core.thought.pleasant_company`, `core.thought.severe_pain`, `core.thought.slept_barracks`, `core.thought.slept_bedroom`, `core.thought.slept_cold`, `core.thought.slept_ground`, `core.thought.slept_outside`, `core.thought.soaked`, `core.thought.starving`, `core.thought.sweltering`, `core.thought.tired`
+- **weather**: `core.weather.clear`, `core.weather.cloudy`, `core.weather.fog`, `core.weather.rain`, `core.weather.snow`, `core.weather.storm`
+- **singletons**: `core.colonist`, `core.looks`, `core.names`, `core.rooms`, `core.rpg`, `core.worldgen`

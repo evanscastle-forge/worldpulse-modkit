@@ -7,6 +7,7 @@ Commands
   new ID               start a mod in mods/ID from templates/mod
   new-def KIND NAME    copy a known-good def into a mod under a new id (--like core.item.tuque)
   override ID          copy a core def whole into a mod, to change it (e.g. core.biome.tundra)
+  save-reply [FILE]    save the files a chat assistant wrote into mods/
   validate [MOD]       check a mod against the schemas and core content (no game needed)
   test [MOD]           the game's own checks: modtool validate + simulate (needs the game)
   sprite ID|FILE       preview a sprite in the terminal, or --png it
@@ -478,6 +479,7 @@ def validate(mod):
     pack = dict(base)
     for _, d in mine:
         pack[d["id"]] = d
+    check_expect(mod, {d["id"] for _, d in mine}, issues)
 
     seen, overrides = {}, []
     checker = Checker(pack, issues)
@@ -528,6 +530,41 @@ def validate(mod):
         elif kind == "biome" and d.get("priority", 0) <= 0:
             issues.append(issue(NOTE, "a new biome only claims tiles where its temperature and rain ranges fit and its priority beats the others; it affects new worlds only", file, did))
     return {"mod": str(mod), "modId": mid, "defs": len(mine), "overrides": overrides, "issues": issues}
+
+
+METRICS = {"seen": True, "peak": True, "deaths": False, "alive": False, "breaks": False, "moodAvg": False, "moodMin": False}
+
+
+def check_expect(mod, ids, issues):
+    """tests/expect.json: the shape `modkit test` reads (docs/testing.md)."""
+    path = Path(mod) / "tests" / "expect.json"
+    if not path.exists():
+        return
+    f = "tests/expect.json"
+    try:
+        e = load_jsonc(path)
+    except ValueError as ex:
+        issues.append(issue(ERROR, "not valid JSON: %s" % ex, f))
+        return
+    if not isinstance(e, dict):
+        issues.append(issue(ERROR, 'must be an object like {"days": 10, "seeds": [1, 2, 3], "expect": [...]} (docs/testing.md)', f))
+        return
+    for k in e:
+        if k not in ("days", "seeds", "biome", "expect") and not k.startswith("_"):
+            issues.append(issue(ERROR, "unknown field%s; expect.json has days, seeds, biome, expect (docs/testing.md)" % suggest(k, ["days", "seeds", "biome", "expect"]), f, None, k))
+    for n, x in enumerate(e.get("expect") or []):
+        at = "expect[%d]" % n
+        if not isinstance(x, dict) or not isinstance(x.get("metric"), str):
+            issues.append(issue(ERROR, 'each check is {"metric": "seen", "id": "...", "min": 1} or {"metric": "deaths", "max": 0}', f, None, at))
+            continue
+        m = x["metric"]
+        if m not in METRICS:
+            issues.append(issue(ERROR, "unknown metric '%s'%s; metrics: %s" % (m, suggest(m, list(METRICS)), ", ".join(METRICS)), f, None, at + ".metric"))
+        elif METRICS[m] and x.get("id") not in ids:
+            issues.append(issue(ERROR, "'%s' needs an \"id\" of one of this mod's defs" % m, f, None, at + ".id"))
+        for k in x:
+            if k not in ("metric", "id", "min", "max") and not k.startswith("_"):
+                issues.append(issue(ERROR, "unknown field; a check has metric, id, min, max", f, None, "%s.%s" % (at, k)))
 
 
 def check_rules(d, pack, file, issues):
@@ -785,6 +822,34 @@ def cmd_override(a):
     target.write_text(dump_defs(existing), encoding="utf-8")
     print("copied %s whole into %s. Change only what the mod needs and keep the rest; list it under Overrides in NOTES.md"
           % (a.id, target.relative_to(mod.parent)))
+    return 0
+
+
+REPLY_RE = re.compile(r"^\s*`?(mods/[A-Za-z0-9_./-]+?)`?\s*:?\s*\n```[a-z]*\n(.*?)\n```", re.M | re.S)
+
+
+def cmd_save_reply(a):
+    """Save the files a chat assistant wrote (a path line, then a code block) into mods/."""
+    text = Path(a.file).read_text(encoding="utf-8") if a.file else sys.stdin.read()
+    saved = 0
+    for path, body in REPLY_RE.findall(text):
+        target = (MODS / path[len("mods/"):]).resolve()
+        try:
+            target.relative_to(MODS.resolve())
+        except ValueError:
+            print("skipped %s: only files under mods/ are saved" % path)
+            continue
+        if path.endswith("/mod.json") and target.exists():
+            print("kept the existing %s (made by modkit new)" % path)
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(body.rstrip() + "\n", encoding="utf-8")
+        print("saved %s" % path)
+        saved += 1
+    if not saved:
+        print("no files found: the reply should have a line with the path (mods/<id>/...) and then a ``` code block")
+        return 1
+    print("next: python3 tools/modkit.py validate <id>, and paste the output back with prompts/03-fix.md")
     return 0
 
 
@@ -1141,11 +1206,12 @@ def regenerate_docs(check):
     return stale, todo, uncovered
 
 
-SMALL = ["AGENTS.md", "docs/concepts.md", "docs/limits.md", "docs/api/item.md", "docs/api/plant.md", "docs/api/building.md",
-         "docs/api/animal.md", "docs/api/biome.md", "docs/api/sprite.md", "docs/api/mod-json.md"]
+SMALL = ["AGENTS.md", "docs/concepts.md", "docs/limits.md", "workflows/idea-to-spec.md", "workflows/fix-validation-errors.md",
+         "workflows/review.md", "docs/testing.md", "docs/api/item.md", "docs/api/plant.md", "docs/api/building.md",
+         "docs/api/animal.md", "docs/api/biome.md", "docs/api/sprite.md", "docs/api/mod-json.md", "docs/balance.md", "docs/ids.md"]
 FULL = ["README.md", "AGENTS.md", "docs/concepts.md", "docs/limits.md", "docs/compatibility.md", "docs/balance.md", "docs/art.md",
         "docs/testing.md", "docs/api/*.md", "workflows/*.md", "agents/*.md", "docs/ids.md"]
-BUDGET = {"modding-small.md": 9000, "modding-full.md": 40000}  # tokens, at ~4 characters each
+BUDGET = {"modding-small.md": 12000, "modding-full.md": 40000}  # tokens, at ~4 characters each
 
 
 def bundle_text(patterns, title, intro):
@@ -1223,6 +1289,12 @@ def main(argv=None):
     s.add_argument("id", help="the id to override, e.g. core.biome.tundra")
     s.add_argument("--mod", help="the mod (default: the only one in mods/)")
     s.set_defaults(fn=cmd_override)
+
+    s = sub.add_parser("save-reply", help="save the files in a chat assistant's reply into mods/",
+                       description="Paste a chat assistant's whole reply into a file (or stdin); every 'mods/<id>/<path>' line "
+                                   "followed by a ``` code block is saved to that path.")
+    s.add_argument("file", nargs="?", help="a text file with the reply (default: read stdin)")
+    s.set_defaults(fn=cmd_save_reply)
 
     s = sub.add_parser("validate", help="check a mod (no game needed)")
     s.add_argument("mod", nargs="?", help="mod folder or id")
