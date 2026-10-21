@@ -30,9 +30,13 @@ unattended colony for some days on a few seeds, and reports
 - deaths, breakdowns and mood, so you can see if you made the game too hard or too easy;
 - crashes, if any.
 
+Simulate watches only your mod's own defs (an overridden core def counts as yours: a biome override
+is "seen" when the colony lands in it). It cannot tell you that bears became more common; play for that.
+
 After landing, the simulated colony is given a starter setup for your mod: your buildings and the
 stations of your recipes are placed, your recipes get bills of 2, your sowable plants get growing
-zones, and your animals are hunted when they appear. Nothing else is done for it.
+zones, and your animals are hunted when they appear. A recipe's material is supplied the way a player
+would: timid grazers that drop it are hunted, crops that yield it are sown. Nothing else is done for it.
 
 ### tests/expect.json
 

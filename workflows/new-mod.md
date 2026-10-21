@@ -12,7 +12,9 @@ short report.
    Follow `add-def.md` for each; `make-sprite.md` for each sprite.
    *Check after each:* `python3 tools/modkit.py validate MODID` has no errors.
 4. Write `mods/MODID/tests/expect.json`: one `seen` entry per new item, plant, animal or building,
-   and `{ "metric": "deaths", "max": 0 }` unless the mod is meant to be dangerous.
+   and `{ "metric": "deaths", "max": 0 }` unless the mod is meant to be dangerous. If the mod is about
+   one biome (it overrides a biome, or adds a crop or animal for one), set `"biome"` to that biome's
+   id so every test lands there.
 5. Follow `test-and-balance.md`.
 6. Follow `review.md`. Fix what it finds.
 7. Fill in `mods/MODID/README.md` for players (what it adds, what it overrides).

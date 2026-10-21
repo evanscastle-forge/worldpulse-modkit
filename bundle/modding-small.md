@@ -373,9 +373,13 @@ unattended colony for some days on a few seeds, and reports
 - deaths, breakdowns and mood, so you can see if you made the game too hard or too easy;
 - crashes, if any.
 
+Simulate watches only your mod's own defs (an overridden core def counts as yours: a biome override
+is "seen" when the colony lands in it). It cannot tell you that bears became more common; play for that.
+
 After landing, the simulated colony is given a starter setup for your mod: your buildings and the
 stations of your recipes are placed, your recipes get bills of 2, your sowable plants get growing
-zones, and your animals are hunted when they appear. Nothing else is done for it.
+zones, and your animals are hunted when they appear. A recipe's material is supplied the way a player
+would: timid grazers that drop it are hunted, crops that yield it are sown. Nothing else is done for it.
 
 ### tests/expect.json
 
@@ -450,9 +454,12 @@ Food, materials (wood, stone, cloth, leather) and **apparel** are all items.
 
 - **Food**: any item with `nutrition` is eaten when colonists are hungry. Raw food is cooked at a
   building whose `product` is a meal.
-- **Apparel**: colonists put on the best apparel lying around for the season by themselves: an empty
-  slot first, then more `armor`, then `cold` when the days are cold and `heat` when they are hot. They
-  take off a piece that makes them too hot.
+- **Apparel**: colonists put on the best apparel lying around for the season by themselves. Each
+  piece scores `1 + armor`, plus `2 × cold` when the day's mean temperature is below `comfortMin + 5`
+  (17° with core's `core.colonist`), plus `2 × heat` when it is above `comfortMax − 5` (25°). In each
+  slot they wear the highest score (an empty slot scores 0) and take off a piece that scores below 0. So in winter a warm piece (cold 20 scores
+  41 + armor) beats an armored one (the vest: 1 + 25 + 8 = 34), and in summer armor wins unless the
+  piece has negative `heat`.
 - **Recipes**: an item with a `recipe` appears as a bill row at its station. Colonists make it while
   the colony has fewer than the bill (`keep` until the player changes it) and the material exists.
 - **Materials**: an item is useful once something produces it: a plant's `harvestItem`/`woodItem`, a

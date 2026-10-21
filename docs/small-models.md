@@ -34,3 +34,10 @@ You don't need a top model or a coding agent. Pick the way that matches what you
 ## What we have measured
 
 <!-- results of dogfood runs are recorded here -->
+Measured on 2026-10-21 with the toolkit at mod API 1. Each run started from a fresh checkout.
+
+| setup | request | result |
+| --- | --- | --- |
+| Claude Code, Haiku model, terminal | "a bearskin cloak made from leather, warmer than the parka, some armor, its own sprites; bears a little more common in the boreal forest" (one message, no help) | finished alone: 5 defs (item, 3 new sprites, biome override), NOTES.md, README, expect.json; validate clean, `modkit test` passed (crafted in 3/3 seeds, no deaths). It misread how colonists choose apparel (doc fixed) and didn't land the test in the boreal forest (workflow now says to) |
+| Haiku with no tools, chat, small bundle + prompts 01–03 | "a pumpkin crop that grows slowly but gives a lot of food" | the defs validated on the first try; the guessed expect.json took two fix rounds (the small bundle then lacked docs/testing.md; it has it now). `modkit test` showed the pumpkins never ripen within the 10-day test: a real balance finding for the next round |
+
