@@ -45,7 +45,7 @@ instructions with the model of your choice ([docs/panel-protocol.md](docs/panel-
 You need Python 3.8+ (nothing else to install) and, for the in-game tests, WorldPulse.
 
 ```
-git clone <this repository> worldpulse-modkit && cd worldpulse-modkit
+git clone https://github.com/evanscastle-forge/worldpulse-modkit.git && cd worldpulse-modkit
 python3 tools/modkit.py doctor                  # finds the game and your mods folder
 python3 tools/modkit.py new furhats --name "Fur Hats"
 ```
