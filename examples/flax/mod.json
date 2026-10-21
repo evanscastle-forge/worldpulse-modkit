@@ -1,0 +1,10 @@
+{
+  "id": "flax",
+  "name": "Flax and Linen",
+  "version": "1.0.0",
+  "authors": [
+    "WorldPulse"
+  ],
+  "description": "Flax, a cool-weather fibre crop, and linen shirts for summer.",
+  "modApi": 1
+}

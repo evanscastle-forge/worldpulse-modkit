@@ -1,0 +1,26 @@
+[
+  {
+    "id": "flax.item.linen",
+    "kind": "item",
+    "label": "linen",
+    "color": "#d8ccb0",
+    "stackLimit": 75,
+    "sprite": "flax.sprite.item.linen"
+  },
+  {
+    "id": "flax.item.linen_shirt",
+    "kind": "item",
+    "label": "linen shirt",
+    "color": "#e6dcc3",
+    "stackLimit": 1,
+    "slot": "torso",
+    "cold": 1,
+    "heat": 6,
+    "recipe": {"station": "core.building.tailor_bench", "item": "flax.item.linen", "count": 20, "ticks": 500},
+    "keep": 0,
+    "sprite": "core.sprite.item.tunic",
+    "layer": "core.sprite.wear.tunic",
+    "portrait": "core.sprite.portrait.tunic",
+    "_why": "a summer top: cooler than the tunic (heat 2), less warm (cold 3); uses the core tunic art, tinted pale"
+  }
+]

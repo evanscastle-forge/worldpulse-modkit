@@ -1,0 +1,10 @@
+{
+  "id": "tundrawolves",
+  "name": "Tundra Wolves",
+  "version": "1.0.0",
+  "authors": [
+    "WorldPulse"
+  ],
+  "description": "Arctic wolves in the tundra.",
+  "modApi": 1
+}

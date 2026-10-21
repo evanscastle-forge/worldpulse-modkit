@@ -1,0 +1,19 @@
+[
+  {
+    "id": "flax.plant.flax",
+    "kind": "plant",
+    "label": "flax",
+    "color": "#5f8f4e",
+    "glyph": "crop",
+    "growTicks": 18000,
+    "minTemp": 2,
+    "sowable": true,
+    "minFertility": 50,
+    "harvestItem": "flax.item.linen",
+    "harvestYield": 8,
+    "harvestMin": 100,
+    "workTicks": 50,
+    "sprite": "flax.sprite.plant.flax",
+    "_why": "a hardier fibre crop than cotton: grows from 2 degrees (cotton 6), a little faster, yields less"
+  }
+]

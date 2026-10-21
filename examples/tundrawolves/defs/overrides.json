@@ -1,0 +1,21 @@
+[
+  {
+    "id": "core.biome.tundra",
+    "glyph": "u",
+    "kind": "biome",
+    "label": "tundra",
+    "color": "#9aa48c",
+    "minTemp": -16,
+    "maxTemp": -3,
+    "priority": 4,
+    "habitability": 25,
+    "plantDensity": 300,
+    "waterFraction": 50,
+    "marshFraction": 30,
+    "terrain": [{"terrain": "core.terrain.gravel", "upTo": 450}, {"terrain": "core.terrain.soil", "upTo": 1000}],
+    "plants": [{"id": "core.plant.grass", "weight": 70}, {"id": "core.plant.bush", "weight": 20}, {"id": "core.plant.pine", "weight": 6}],
+    "animalDensity": 8,
+    "animals": [{"id": "core.animal.hare", "weight": 40}, {"id": "core.animal.elk", "weight": 30}, {"id": "core.animal.wolf", "weight": 15}, {"id": "core.animal.bear", "weight": 5}, {"id": "tundrawolves.animal.arctic_wolf", "weight": 20}],
+    "_why": "adds the arctic wolf to the tundra's animals; everything else is core's"
+  }
+]

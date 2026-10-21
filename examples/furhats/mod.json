@@ -1,0 +1,10 @@
+{
+  "id": "furhats",
+  "name": "Fur Hats",
+  "version": "1.0.0",
+  "authors": [
+    "WorldPulse"
+  ],
+  "description": "Warm fur hats made from leather at the tailor bench.",
+  "modApi": 1
+}

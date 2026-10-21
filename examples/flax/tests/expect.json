@@ -1,0 +1,10 @@
+{
+  "days": 10,
+  "seeds": [1, 2, 3],
+  "expect": [
+    { "metric": "seen", "id": "flax.plant.flax", "min": 3 },
+    { "metric": "seen", "id": "flax.item.linen", "min": 2 },
+    { "metric": "seen", "id": "flax.item.linen_shirt", "min": 1 },
+    { "metric": "deaths", "max": 0 }
+  ]
+}

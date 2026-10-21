@@ -1,0 +1,9 @@
+{
+  "days": 10,
+  "seeds": [1, 2],
+  "biome": "core.biome.tundra",
+  "expect": [
+    { "metric": "seen", "id": "tundrawolves.animal.arctic_wolf", "min": 1 },
+    { "metric": "alive", "min": 2 }
+  ]
+}

@@ -61,7 +61,8 @@ What must hold for the mod to pass. `modkit test` (and the game) read it.
 | `moodAvg` | average mood, worst seed | |
 | `moodMin` | lowest mood, worst seed | |
 
-`biome` lands every seed in that biome (the tools search for seeds that do), for mods about one place.
+`biome` lands every seed in that biome, for mods about one place (the test makes that biome the best
+landing site in its own copy of the content; your mod is not changed).
 `days`, `seeds` and `biome` can be overridden: `modkit test furhats --days 3 --seeds 1`.
 
 ## Layer 3: play it

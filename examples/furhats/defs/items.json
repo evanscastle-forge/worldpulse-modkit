@@ -1,0 +1,20 @@
+[
+  {
+    "id": "furhats.item.fur_hat",
+    "kind": "item",
+    "label": "fur hat",
+    "color": "#6e4f33",
+    "stackLimit": 1,
+    "slot": "head",
+    "cold": 10,
+    "heat": -4,
+    "armor": 5,
+    "_why": "leather and fur: warmer than a tuque (cold 5), a little protection",
+    "recipe": {"station": "core.building.tailor_bench", "item": "core.item.leather", "count": 20, "ticks": 400},
+    "keep": 0,
+    "hidesHair": true,
+    "sprite": "furhats.sprite.item.fur_hat",
+    "layer": "furhats.sprite.wear.fur_hat",
+    "portrait": "furhats.sprite.portrait.fur_hat"
+  }
+]

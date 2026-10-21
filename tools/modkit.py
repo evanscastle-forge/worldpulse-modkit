@@ -845,10 +845,19 @@ def cmd_sprite(a):
         fail("no sprite defs found")
     tints = {"main": a.main, "skin": a.skin, "hair": a.hair}
     color = sys.stdout.isatty() and not a.plain
+    under = None
+    if a.over:
+        pack = load_pack([REFERENCE / "core"] + ([find_mod(a.mod)] if a.mod else []))
+        if a.over not in pack:
+            fail("no sprite '%s' to draw under it" % a.over)
+        under = sprite_pixels(pack[a.over], tints)
     for n, d in enumerate(defs):
         frames = [0] + list(range(1, len(d.get("frames") or []) + 1))
         for f in frames:
             px = sprite_pixels(d, tints, f)
+            if under is not None:
+                px = [[px[y][x] if y < len(px) and x < len(px[y]) and px[y][x] is not None else under[y][x]
+                       for x in range(len(under[y]))] for y in range(len(under))]
             if a.png:
                 out = Path(a.png)
                 if len(defs) > 1 or len(frames) > 1:
@@ -1228,6 +1237,7 @@ def main(argv=None):
     s.add_argument("--skin", default="#e2b48f")
     s.add_argument("--hair", default="#4b3426")
     s.add_argument("--plain", action="store_true", help="no colors: # for filled pixels")
+    s.add_argument("--over", help="draw it on top of this sprite, e.g. core.sprite.body for a worn layer, core.sprite.portrait.head for a portrait")
     s.set_defaults(fn=cmd_sprite)
 
     for name, fn, h in (("install", cmd_install, "copy into the game's mods folder and reload"),

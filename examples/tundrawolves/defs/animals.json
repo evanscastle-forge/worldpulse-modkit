@@ -1,0 +1,23 @@
+[
+  {
+    "id": "tundrawolves.animal.arctic_wolf",
+    "kind": "animal",
+    "label": "arctic wolf",
+    "color": "#dfe6ea",
+    "size": 65,
+    "maxHealth": 60,
+    "moveTicks": 4,
+    "damage": 8,
+    "attackTicks": 45,
+    "foodDecay": 7,
+    "diet": "predator",
+    "meatYield": 25,
+    "leatherYield": 18,
+    "sprite": "core.sprite.animal.canine",
+    "minTemp": -50,
+    "maxTemp": 5,
+    "retaliate": 100,
+    "manhuntChance": 3,
+    "_why": "a smaller, paler wolf of the cold: hunts hares and elk, rarely people"
+  }
+]
