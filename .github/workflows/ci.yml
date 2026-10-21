@@ -1,0 +1,26 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  check:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.8", "3.12"]
+        exclude:
+          - os: macos-latest
+            python: "3.8"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Tests (validator, commands, bundle, panel adapter)
+        run: python -m unittest discover -s tests -v
+      - name: Docs cover every schema field and the bundles are current
+        run: python tools/modkit.py bundle --check
+      - name: Examples validate
+        run: |
+          python tools/modkit.py validate furhats --local
+          python tools/modkit.py validate tundrawolves --local
+          python tools/modkit.py validate flax --local

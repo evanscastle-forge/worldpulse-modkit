@@ -49,6 +49,14 @@ HEX_RE = re.compile(r"^#[0-9a-fA-F]{6}$")
 KIND_FILES = {}  # kind -> default defs file name for new-def
 
 
+def rel(path):
+    """A path as the person sees it: relative to the toolkit when inside it."""
+    try:
+        return Path(path).resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return str(path)
+
+
 def fail(message, code=2):
     print("error: " + message, file=sys.stderr)
     sys.exit(code)
@@ -728,7 +736,7 @@ def cmd_new(a):
             text = p.read_text(encoding="utf-8").replace("{{id}}", mid).replace("{{name}}", a.name or mid)
             text = text.replace("{{modApi}}", str(game_info().get("modApi", 1)))
             p.write_text(text, encoding="utf-8")
-    print("created %s\nnext: describe the mod in %s, then add defs (modkit new-def --help)" % (dest.relative_to(ROOT), (dest / "NOTES.md").relative_to(ROOT)))
+    print("created %s\nnext: describe the mod in %s, then add defs (modkit new-def --help)" % (rel(dest), rel(dest / "NOTES.md")))
     return 0
 
 
@@ -860,8 +868,10 @@ def cmd_sprite(a):
                        for x in range(len(under[y]))] for y in range(len(under))]
             if a.png:
                 out = Path(a.png)
-                if len(defs) > 1 or len(frames) > 1:
-                    out = out.with_name("%s-%s%s%s" % (out.stem, d["id"].split(".")[-1], "-%d" % f if f else "", out.suffix))
+                if len(defs) > 1:
+                    out = out.with_name("%s-%s%s" % (out.stem, d["id"].split(".")[-1], out.suffix))
+                if f:
+                    out = out.with_name("%s-frame%d%s" % (out.stem, f, out.suffix))
                 write_png(out, px, a.scale)
                 print("wrote %s (%dx%d at x%d)" % (out, len(px[0]), len(px), a.scale))
             else:
@@ -946,7 +956,7 @@ def cmd_pack(a):
             rel = p.relative_to(mod).as_posix()
             if p.is_file() and not rel.endswith(".zip"):
                 z.write(p, "%s/%s" % (r["modId"], rel))
-    print("wrote %s" % out.relative_to(ROOT))
+    print("wrote %s" % rel(out))
     return 0
 
 

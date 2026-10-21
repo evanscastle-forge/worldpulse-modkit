@@ -1,0 +1,9 @@
+[
+  { "id": "broken.item.fur_hat", "kind": "item", "stackLimit": 1, "slot": "head", "cold": "12", "warmth": 5, "Armor": 5,
+    "recipe": { "station": "core.building.tailor_bench", "item": "core.item.lether", "count": 20 },
+    "sprite": "core.sprite.item.tuque", "layer": "broken.sprite.hat", "portrait": "core.sprite.item.tuque" },
+  { "id": "broken.sprite.hat", "kind": "sprite", "palette": { "m": "$main" }, "rows": ["mmmm"] },
+  { "id": "broken.animal.yeti", "kind": "animal", "diet": "omnivore", "sprite": "core.sprite.animal.bear" },
+  { "id": "broken.plant.moss" },
+  // comments and trailing commas are fine, as in the game
+]
