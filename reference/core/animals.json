@@ -1,0 +1,20 @@
+[
+  { "id": "core.animal.hare", "kind": "animal", "label": "hare", "color": "#b59a7a", "size": 40, "maxHealth": 20, "moveTicks": 4,
+    "damage": 2, "attackTicks": 40, "foodDecay": 5, "diet": "grazer", "meatYield": 8, "leatherYield": 4, "sprite": "core.sprite.animal.small", "minTemp": -30, "maxTemp": 42 },
+  { "id": "core.animal.deer", "kind": "animal", "label": "deer", "color": "#a0703c", "size": 75, "maxHealth": 60, "moveTicks": 4,
+    "damage": 6, "attackTicks": 45, "foodDecay": 6, "diet": "grazer", "meatYield": 35, "leatherYield": 20, "sprite": "core.sprite.animal.deer", "minTemp": -25, "maxTemp": 38, "retaliate": 10 },
+  { "id": "core.animal.boar", "kind": "animal", "label": "boar", "color": "#5e4a3c", "size": 70, "maxHealth": 80, "moveTicks": 5,
+    "damage": 8, "attackTicks": 45, "foodDecay": 6, "diet": "grazer", "meatYield": 40, "leatherYield": 20, "sprite": "core.sprite.animal.boar", "minTemp": -10, "maxTemp": 42, "retaliate": 60 },
+  { "id": "core.animal.elk", "kind": "animal", "label": "elk", "color": "#7a5a3a", "size": 95, "maxHealth": 110, "moveTicks": 5,
+    "damage": 10, "attackTicks": 50, "foodDecay": 7, "diet": "grazer", "meatYield": 70, "leatherYield": 35, "sprite": "core.sprite.animal.deer", "minTemp": -40, "maxTemp": 25, "retaliate": 30 },
+  { "id": "core.animal.ibex", "kind": "animal", "label": "ibex", "color": "#b39a72", "size": 70, "maxHealth": 55, "moveTicks": 4,
+    "damage": 6, "attackTicks": 45, "foodDecay": 5, "diet": "grazer", "meatYield": 30, "leatherYield": 15, "sprite": "core.sprite.animal.deer", "minTemp": -10, "maxTemp": 48, "retaliate": 20 },
+  { "id": "core.animal.capybara", "kind": "animal", "label": "capybara", "color": "#8a6a4a", "size": 60, "maxHealth": 45, "moveTicks": 5,
+    "damage": 4, "attackTicks": 45, "foodDecay": 6, "diet": "grazer", "meatYield": 30, "leatherYield": 15, "sprite": "core.sprite.animal.small", "minTemp": 5, "maxTemp": 45 },
+  { "id": "core.animal.wolf", "kind": "animal", "label": "wolf", "color": "#8b8f96", "size": 70, "maxHealth": 75, "moveTicks": 4,
+    "damage": 9, "attackTicks": 45, "foodDecay": 8, "diet": "predator", "meatYield": 30, "leatherYield": 20, "sprite": "core.sprite.animal.canine", "minTemp": -40, "maxTemp": 35, "retaliate": 100, "manhuntChance": 6 },
+  { "id": "core.animal.bear", "kind": "animal", "label": "bear", "color": "#4a3a2e", "size": 110, "maxHealth": 170, "moveTicks": 5,
+    "damage": 16, "attackTicks": 55, "foodDecay": 7, "diet": "predator", "meatYield": 80, "leatherYield": 40, "sprite": "core.sprite.animal.bear", "minTemp": -40, "maxTemp": 30, "retaliate": 100, "manhuntChance": 3 },
+  { "id": "core.animal.cougar", "kind": "animal", "label": "cougar", "color": "#b08a5a", "size": 75, "maxHealth": 80, "moveTicks": 4,
+    "damage": 10, "attackTicks": 45, "foodDecay": 8, "diet": "predator", "meatYield": 30, "leatherYield": 20, "sprite": "core.sprite.animal.feline", "minTemp": 0, "maxTemp": 46, "retaliate": 100, "manhuntChance": 5 }
+]

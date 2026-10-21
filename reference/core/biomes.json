@@ -1,0 +1,70 @@
+[
+  { "id": "core.biome.ocean", "glyph": "~",   "kind": "biome", "label": "ocean",   "color": "#1d3b5a", "water": true, "minTemp": -7 },
+  { "id": "core.biome.sea_ice", "glyph": "=", "kind": "biome", "label": "sea ice", "color": "#c7d6e0", "water": true, "maxTemp": -8 },
+  {
+    "id": "core.biome.ice_sheet", "glyph": "i", "kind": "biome", "label": "ice sheet", "color": "#eef3f6",
+    "maxTemp": -16, "priority": 5, "habitability": 0, "plantDensity": 0, "waterFraction": 0, "marshFraction": 0,
+    "terrain": [{ "terrain": "core.terrain.ice", "upTo": 850 }, { "terrain": "core.terrain.gravel", "upTo": 1000 }]
+  },
+  {
+    "id": "core.biome.tundra", "glyph": "u", "kind": "biome", "label": "tundra", "color": "#9aa48c",
+    "minTemp": -16, "maxTemp": -3, "priority": 4, "habitability": 25, "plantDensity": 300, "waterFraction": 50, "marshFraction": 30,
+    "terrain": [{ "terrain": "core.terrain.gravel", "upTo": 450 }, { "terrain": "core.terrain.soil", "upTo": 1000 }],
+    "plants": [{ "id": "core.plant.grass", "weight": 70 }, { "id": "core.plant.bush", "weight": 20 }, { "id": "core.plant.pine", "weight": 6 }],
+    "animalDensity": 8, "animals": [{ "id": "core.animal.hare", "weight": 40 }, { "id": "core.animal.elk", "weight": 30 }, { "id": "core.animal.wolf", "weight": 15 }, { "id": "core.animal.bear", "weight": 5 }]
+  },
+  {
+    "id": "core.biome.boreal_forest", "glyph": "b", "kind": "biome", "label": "boreal forest", "color": "#3f6146",
+    "minTemp": -3, "maxTemp": 8, "minRain": 400, "priority": 3, "habitability": 70, "plantDensity": 500, "waterFraction": 60, "marshFraction": 40,
+    "terrain": [{ "terrain": "core.terrain.gravel", "upTo": 200 }, { "terrain": "core.terrain.soil", "upTo": 900 }, { "terrain": "core.terrain.rich_soil", "upTo": 1000 }],
+    "plants": [{ "id": "core.plant.grass", "weight": 45 }, { "id": "core.plant.pine", "weight": 35 }, { "id": "core.plant.bush", "weight": 12 }, { "id": "core.plant.berry_bush", "weight": 3 }],
+    "animalDensity": 12, "animals": [{ "id": "core.animal.hare", "weight": 30 }, { "id": "core.animal.deer", "weight": 25 }, { "id": "core.animal.elk", "weight": 20 }, { "id": "core.animal.boar", "weight": 10 }, { "id": "core.animal.wolf", "weight": 10 }, { "id": "core.animal.bear", "weight": 5 }]
+  },
+  {
+    "id": "core.biome.temperate_forest", "glyph": "f", "kind": "biome", "label": "temperate forest", "color": "#55833f",
+    "minTemp": 8, "maxTemp": 22, "minRain": 800, "priority": 2, "habitability": 100, "plantDensity": 550, "waterFraction": 60, "marshFraction": 40,
+    "terrain": [{ "terrain": "core.terrain.gravel", "upTo": 120 }, { "terrain": "core.terrain.soil", "upTo": 850 }, { "terrain": "core.terrain.rich_soil", "upTo": 1000 }],
+    "plants": [{ "id": "core.plant.grass", "weight": 45 }, { "id": "core.plant.tall_grass", "weight": 15 }, { "id": "core.plant.oak", "weight": 18 },
+               { "id": "core.plant.poplar", "weight": 12 }, { "id": "core.plant.bush", "weight": 8 }, { "id": "core.plant.berry_bush", "weight": 4 }],
+    "animalDensity": 14, "animals": [{ "id": "core.animal.hare", "weight": 30 }, { "id": "core.animal.deer", "weight": 35 }, { "id": "core.animal.boar", "weight": 20 }, { "id": "core.animal.wolf", "weight": 10 }, { "id": "core.animal.bear", "weight": 3 }]
+  },
+  {
+    "id": "core.biome.swamp", "glyph": "s", "kind": "biome", "label": "temperate swamp", "color": "#4d6b4a",
+    "minTemp": 10, "maxTemp": 25, "minRain": 2400, "priority": 6, "habitability": 55, "plantDensity": 600, "waterFraction": 120, "marshFraction": 250,
+    "terrain": [{ "terrain": "core.terrain.soil", "upTo": 700 }, { "terrain": "core.terrain.rich_soil", "upTo": 1000 }],
+    "plants": [{ "id": "core.plant.tall_grass", "weight": 40 }, { "id": "core.plant.grass", "weight": 20 }, { "id": "core.plant.poplar", "weight": 18 },
+               { "id": "core.plant.bush", "weight": 14 }, { "id": "core.plant.berry_bush", "weight": 4 }],
+    "animalDensity": 10, "animals": [{ "id": "core.animal.capybara", "weight": 30 }, { "id": "core.animal.boar", "weight": 30 }, { "id": "core.animal.deer", "weight": 20 }, { "id": "core.animal.cougar", "weight": 5 }, { "id": "core.animal.wolf", "weight": 5 }]
+  },
+  {
+    "id": "core.biome.tropical_rainforest", "glyph": "j", "kind": "biome", "label": "tropical rainforest", "color": "#2f6b34",
+    "minTemp": 22, "minRain": 1800, "priority": 3, "habitability": 65, "plantDensity": 750, "waterFraction": 70, "marshFraction": 60,
+    "terrain": [{ "terrain": "core.terrain.soil", "upTo": 650 }, { "terrain": "core.terrain.rich_soil", "upTo": 1000 }],
+    "plants": [{ "id": "core.plant.tall_grass", "weight": 30 }, { "id": "core.plant.teak", "weight": 30 }, { "id": "core.plant.bush", "weight": 25 },
+               { "id": "core.plant.berry_bush", "weight": 6 }],
+    "animalDensity": 12, "animals": [{ "id": "core.animal.capybara", "weight": 40 }, { "id": "core.animal.boar", "weight": 30 }, { "id": "core.animal.cougar", "weight": 10 }]
+  },
+  {
+    "id": "core.biome.arid_shrubland", "glyph": "a", "kind": "biome", "label": "arid shrubland", "color": "#a39a62",
+    "minTemp": 8, "minRain": 250, "maxRain": 800, "priority": 1, "habitability": 60, "plantDensity": 300, "waterFraction": 20, "marshFraction": 5,
+    "terrain": [{ "terrain": "core.terrain.sand", "upTo": 250 }, { "terrain": "core.terrain.gravel", "upTo": 550 }, { "terrain": "core.terrain.soil", "upTo": 1000 }],
+    "plants": [{ "id": "core.plant.grass", "weight": 50 }, { "id": "core.plant.bush", "weight": 30 }, { "id": "core.plant.cactus", "weight": 8 },
+               { "id": "core.plant.poplar", "weight": 4 }, { "id": "core.plant.berry_bush", "weight": 3 }],
+    "animalDensity": 9, "animals": [{ "id": "core.animal.hare", "weight": 40 }, { "id": "core.animal.ibex", "weight": 35 }, { "id": "core.animal.cougar", "weight": 10 }]
+  },
+  {
+    "id": "core.biome.desert", "glyph": "d", "kind": "biome", "label": "desert", "color": "#d6bf86",
+    "minTemp": 8, "maxRain": 250, "priority": 2, "habitability": 25, "plantDensity": 120, "waterFraction": 8, "marshFraction": 0,
+    "terrain": [{ "terrain": "core.terrain.sand", "upTo": 800 }, { "terrain": "core.terrain.gravel", "upTo": 1000 }],
+    "plants": [{ "id": "core.plant.cactus", "weight": 40 }, { "id": "core.plant.bush", "weight": 40 }, { "id": "core.plant.grass", "weight": 20 }],
+    "animalDensity": 5, "animals": [{ "id": "core.animal.hare", "weight": 50 }, { "id": "core.animal.ibex", "weight": 40 }, { "id": "core.animal.cougar", "weight": 8 }]
+  },
+  {
+    "id": "core.biome.temperate_grassland", "glyph": "g", "kind": "biome", "label": "temperate grassland", "color": "#8c9f52",
+    "minTemp": 8, "maxTemp": 22, "minRain": 250, "maxRain": 800, "priority": 2, "habitability": 85, "plantDensity": 600, "waterFraction": 35, "marshFraction": 15,
+    "terrain": [{ "terrain": "core.terrain.gravel", "upTo": 150 }, { "terrain": "core.terrain.soil", "upTo": 880 }, { "terrain": "core.terrain.rich_soil", "upTo": 1000 }],
+    "plants": [{ "id": "core.plant.grass", "weight": 60 }, { "id": "core.plant.tall_grass", "weight": 25 }, { "id": "core.plant.bush", "weight": 6 },
+               { "id": "core.plant.oak", "weight": 5 }, { "id": "core.plant.berry_bush", "weight": 4 }],
+    "animalDensity": 14, "animals": [{ "id": "core.animal.hare", "weight": 35 }, { "id": "core.animal.deer", "weight": 35 }, { "id": "core.animal.boar", "weight": 15 }, { "id": "core.animal.wolf", "weight": 8 }]
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/weather.schema.json",
+  "title": "weather",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "weight": {
+      "type": "integer",
+      "default": 10
+    },
+    "minTemp": {
+      "type": "integer",
+      "default": -100
+    },
+    "maxTemp": {
+      "type": "integer",
+      "default": 100
+    },
+    "growth": {
+      "type": "integer",
+      "default": 100
+    },
+    "tempOffset": {
+      "type": "integer",
+      "default": 0
+    },
+    "minTicks": {
+      "type": "integer",
+      "default": 1500
+    },
+    "maxTicks": {
+      "type": "integer",
+      "default": 6000
+    },
+    "wet": {
+      "type": "boolean",
+      "default": false
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "kind": {
+      "const": "weather"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind"
+  ]
+}

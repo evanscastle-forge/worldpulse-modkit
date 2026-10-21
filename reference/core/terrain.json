@@ -1,0 +1,11 @@
+[
+  { "id": "core.terrain.soil",          "kind": "terrain", "label": "soil",          "color": "#6b5537", "fertility": 100 },
+  { "id": "core.terrain.rich_soil",     "kind": "terrain", "label": "rich soil",     "color": "#4e3c26", "fertility": 140 },
+  { "id": "core.terrain.gravel",        "kind": "terrain", "label": "gravel",        "color": "#857d70", "fertility": 70 },
+  { "id": "core.terrain.sand",          "kind": "terrain", "label": "sand",          "color": "#cdb88a", "fertility": 10, "pathCost": 120 },
+  { "id": "core.terrain.ice",           "kind": "terrain", "label": "ice",           "color": "#d9e6ec", "fertility": 0, "pathCost": 150 },
+  { "id": "core.terrain.marsh",         "kind": "terrain", "label": "marsh",         "color": "#4a5a3a", "fertility": 60, "pathCost": 220, "buildable": false },
+  { "id": "core.terrain.shallow_water", "kind": "terrain", "label": "shallow water", "color": "#4677a3", "pathCost": 300, "buildable": false, "water": true },
+  { "id": "core.terrain.deep_water",    "kind": "terrain", "label": "deep water",    "color": "#2b4f74", "walkable": false, "buildable": false, "water": true },
+  { "id": "core.terrain.rough_stone",   "kind": "terrain", "label": "rough stone",   "color": "#6d6964", "fertility": 0 }
+]

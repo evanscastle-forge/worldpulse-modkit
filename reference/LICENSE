@@ -1,0 +1,13 @@
+WorldPulse core content: all rights reserved.
+
+The files under reference/ are the game's own content definitions and pixel art, published so that
+mod authors and their tools can read them, validate against them and copy individual defs into a mod
+to change them.
+
+You may: read them; use them to build and check mods for WorldPulse; include in a WorldPulse mod the
+specific defs your mod overrides, changed or unchanged.
+
+You may not: redistribute this content as a whole or in substantial part outside a WorldPulse mod,
+or use it (art included) in other games or products.
+
+These files are regenerated from the game with every toolkit update; do not edit them.

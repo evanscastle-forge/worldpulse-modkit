@@ -1,0 +1,8 @@
+[
+  { "id": "core.weather.clear",  "kind": "weather", "label": "clear",        "weight": 50, "minTicks": 2000, "maxTicks": 7000 },
+  { "id": "core.weather.cloudy", "kind": "weather", "label": "cloudy",       "weight": 25, "growth": 90, "tempOffset": -1 },
+  { "id": "core.weather.rain",   "kind": "weather", "label": "rain",         "weight": 20, "minTemp": 1, "growth": 125, "tempOffset": -2, "wet": true },
+  { "id": "core.weather.storm",  "kind": "weather", "label": "thunderstorm", "weight": 5,  "minTemp": 6, "growth": 120, "tempOffset": -3, "minTicks": 800, "maxTicks": 2500, "wet": true },
+  { "id": "core.weather.fog",    "kind": "weather", "label": "fog",          "weight": 8,  "growth": 90, "minTicks": 800, "maxTicks": 3000 },
+  { "id": "core.weather.snow",   "kind": "weather", "label": "snow",         "weight": 30, "maxTemp": 0, "growth": 50, "tempOffset": -3, "wet": true }
+]

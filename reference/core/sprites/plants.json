@@ -1,0 +1,40 @@
+[
+  { "id": "core.sprite.tree.broadleaf", "kind": "sprite", "size": 16, "palette": {"k": "#1b1f24", "m": "$main", "M": "$main-", "l": "$main+", "b": "#5a3d22"},
+    "rows": [
+      ".....kkkkkk.....",
+      "...kkmmmmmmkk...",
+      "..kmmllmmmmmmk..",
+      ".kmmlllmmmmMmmk.",
+      ".kmmllmmmmMMmmk.",
+      ".kmmmmmmmmmmmMk.",
+      "kmmmMmmmmlmmmMMk",
+      "kmmMMmmmlllmMMMk",
+      ".kmmmmmmmlmmMMk.",
+      ".kMmmmmmmmmMMMk.",
+      "..kMMMMmmMMMMk..",
+      "...kkkkbbkkkk...",
+      "......kbbk......",
+      "......kbbk......",
+      ".....kbbbbk.....",
+      ".....kkkkkk....."
+    ] },
+  { "id": "core.sprite.tree.pine", "kind": "sprite", "size": 16, "palette": {"k": "#1b1f24", "m": "$main", "M": "$main-", "l": "$main+", "b": "#5a3d22"},
+    "rows": [
+      ".......kk.......",
+      "......kmlk......",
+      "......kmlk......",
+      ".....kmmllk.....",
+      ".....kmmmlk.....",
+      "....kmmmmmlk....",
+      "....kMmmmmmk....",
+      "...kmmmmmmmlk...",
+      "...kMMmmmmmmk...",
+      "..kmmmmmmmmmlk..",
+      "..kMMMmmmmmmmk..",
+      ".kmmmmmmmmmmmlk.",
+      ".kMMMMMMMMMMMMk.",
+      ".kkkkkkbbkkkkkk.",
+      "......kbbk......",
+      "......kkkk......"
+    ] }
+]

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/core.looks.schema.json",
+  "title": "core.looks",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "skins": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-nullable": true
+    },
+    "hairs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-nullable": true
+    },
+    "styles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/hairStyle"
+      },
+      "x-nullable": true
+    },
+    "minAge": {
+      "type": "integer",
+      "default": 18
+    },
+    "maxAge": {
+      "type": "integer",
+      "default": 60
+    },
+    "body": {
+      "type": "string",
+      "default": "core.sprite.body",
+      "x-ref": "sprite",
+      "x-size": 16
+    },
+    "head": {
+      "type": "string",
+      "default": "core.sprite.portrait.head",
+      "x-ref": "sprite",
+      "x-size": 32
+    },
+    "id": {
+      "const": "core.looks"
+    },
+    "kind": {
+      "type": "string",
+      "description": "optional; read by id"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id"
+  ],
+  "$defs": {
+    "hairStyle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "sprite": {
+          "type": "string",
+          "x-ref": "sprite",
+          "x-size": 16
+        },
+        "portrait": {
+          "type": "string",
+          "x-ref": "sprite",
+          "x-size": 32
+        }
+      },
+      "patternProperties": {
+        "^_": {},
+        "^\\$schema$": {}
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sprite",
+        "portrait"
+      ]
+    }
+  }
+}

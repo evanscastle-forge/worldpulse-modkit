@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/core.names.schema.json",
+  "title": "core.names",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "id": {
+      "const": "core.names"
+    },
+    "kind": {
+      "type": "string",
+      "description": "optional; read by id"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "names"
+  ]
+}

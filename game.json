@@ -1,0 +1,43 @@
+{
+  "modApi": 1,
+  "saveVersion": 8,
+  "coreHash": "e5a94f1feb3c",
+  "ticksPerSecond": 20,
+  "ticksPerDay": 6000,
+  "kinds": [
+    "animal",
+    "biome",
+    "building",
+    "item",
+    "plant",
+    "roof",
+    "sprite",
+    "terrain",
+    "thought",
+    "weather"
+  ],
+  "singletons": [
+    "core.colonist",
+    "core.looks",
+    "core.names",
+    "core.rooms",
+    "core.rpg",
+    "core.worldgen"
+  ],
+  "workTypes": [
+    "cook",
+    "construct",
+    "grow",
+    "hunt",
+    "mine",
+    "plantcut",
+    "craft",
+    "haul"
+  ],
+  "apparelSlots": [
+    "legs",
+    "torso",
+    "outer",
+    "head"
+  ]
+}

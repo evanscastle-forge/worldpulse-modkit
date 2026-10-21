@@ -1,0 +1,6 @@
+[
+  { "id": "core.rooms", "kind": "rooms", "autoRoofMax": 300, "indoorPercent": 75, "roofSupport": 6,
+    "builtRoof": "core.roof.built", "rockRoof": "core.roof.rock" },
+  { "id": "core.roof.built", "kind": "roof", "label": "roof", "color": "#c9a46a", "workTicks": 60 },
+  { "id": "core.roof.rock",  "kind": "roof", "label": "overhead mountain", "color": "#6a6058", "natural": true }
+]

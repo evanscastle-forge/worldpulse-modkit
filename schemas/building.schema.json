@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/building.schema.json",
+  "title": "building",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "color": {
+      "type": "string",
+      "default": "#ff00ff"
+    },
+    "glyph": {
+      "type": "string",
+      "default": "wall"
+    },
+    "passable": {
+      "type": "boolean",
+      "default": false
+    },
+    "pathCost": {
+      "type": "integer",
+      "default": 100
+    },
+    "natural": {
+      "type": "boolean",
+      "default": false
+    },
+    "mineItem": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "item"
+    },
+    "mineYield": {
+      "type": "integer",
+      "default": 0
+    },
+    "costItem": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "item"
+    },
+    "costCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "workTicks": {
+      "type": "integer",
+      "default": 100
+    },
+    "use": {
+      "type": "string",
+      "x-nullable": true,
+      "x-known": [
+        "bed",
+        "door",
+        "craft",
+        "campfire",
+        "heater",
+        "cooler"
+      ]
+    },
+    "ore": {
+      "type": "boolean",
+      "default": false
+    },
+    "product": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "item"
+    },
+    "productCount": {
+      "type": "integer",
+      "default": 1
+    },
+    "ingredients": {
+      "type": "integer",
+      "default": 10
+    },
+    "productTicks": {
+      "type": "integer",
+      "default": 200
+    },
+    "wall": {
+      "type": "boolean",
+      "default": false
+    },
+    "heat": {
+      "type": "integer",
+      "default": 0
+    },
+    "heatTarget": {
+      "type": "integer",
+      "default": 21
+    },
+    "sprite": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "sprite",
+      "x-size": 16
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "kind": {
+      "const": "building"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind"
+  ]
+}

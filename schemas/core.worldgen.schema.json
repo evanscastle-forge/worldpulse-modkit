@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/core.worldgen.schema.json",
+  "title": "core.worldgen",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "globeFrequency": {
+      "type": "integer",
+      "default": 16
+    },
+    "oceanPercent": {
+      "type": "integer",
+      "default": 45
+    },
+    "mapRadius": {
+      "type": "integer",
+      "default": 64
+    },
+    "bandDepth": {
+      "type": "integer",
+      "default": 7
+    },
+    "colonists": {
+      "type": "integer",
+      "default": 3
+    },
+    "rockFloor": {
+      "type": "string",
+      "default": "core.terrain.rough_stone",
+      "x-ref": "terrain"
+    },
+    "shallowWater": {
+      "type": "string",
+      "default": "core.terrain.shallow_water",
+      "x-ref": "terrain"
+    },
+    "deepWater": {
+      "type": "string",
+      "default": "core.terrain.deep_water",
+      "x-ref": "terrain"
+    },
+    "marsh": {
+      "type": "string",
+      "default": "core.terrain.marsh",
+      "x-ref": "terrain"
+    },
+    "startingItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/itemCount"
+      },
+      "x-nullable": true
+    },
+    "startingApparel": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-nullable": true,
+      "x-ref": "item"
+    },
+    "id": {
+      "const": "core.worldgen"
+    },
+    "kind": {
+      "type": "string",
+      "description": "optional; read by id"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id"
+  ],
+  "$defs": {
+    "itemCount": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "string",
+          "x-ref": "item"
+        },
+        "count": {
+          "type": "integer"
+        }
+      },
+      "patternProperties": {
+        "^_": {},
+        "^\\$schema$": {}
+      },
+      "additionalProperties": false,
+      "required": [
+        "item",
+        "count"
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/sprite.schema.json",
+  "title": "sprite",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "size": {
+      "type": "integer",
+      "default": 16
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "x-nullable": true
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-nullable": true
+    },
+    "frames": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "x-nullable": true
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "kind": {
+      "const": "sprite"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind"
+  ]
+}

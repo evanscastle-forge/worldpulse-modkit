@@ -1,0 +1,18 @@
+[
+  { "id": "core.plant.grass",      "kind": "plant", "label": "grass",       "color": "#6c8c3a", "glyph": "grass", "growTicks": 12000, "minTemp": 0, "spread": 30, "workTicks": 30, "nutrition": 200 },
+  { "id": "core.plant.tall_grass", "kind": "plant", "label": "tall grass",  "color": "#879c45", "glyph": "grass", "growTicks": 18000, "minTemp": 0, "pathCost": 110, "spread": 15, "workTicks": 40, "nutrition": 260 },
+  { "id": "core.plant.bush",       "kind": "plant", "label": "bush",        "color": "#4d6b2d", "glyph": "bush",  "growTicks": 30000, "minTemp": 0, "pathCost": 130, "spread": 6, "minFertility": 10, "workTicks": 60, "nutrition": 150 },
+  { "id": "core.plant.berry_bush", "kind": "plant", "label": "berry bush",  "color": "#7a3f52", "glyph": "berry", "growTicks": 24000, "minTemp": 4, "pathCost": 130, "spread": 3,
+    "harvestItem": "core.item.berries", "harvestYield": 12, "harvestMin": 80, "regrowTo": 30, "workTicks": 50, "nutrition": 200 },
+  { "id": "core.plant.oak",        "kind": "plant", "label": "oak tree",    "color": "#3b5a28", "glyph": "tree",  "growTicks": 90000, "minTemp": 2, "pathCost": 150, "tree": true, "woodYield": 30, "spread": 2, "workTicks": 180, "sprite": "core.sprite.tree.broadleaf" },
+  { "id": "core.plant.poplar",     "kind": "plant", "label": "poplar tree", "color": "#5b8238", "glyph": "tree",  "growTicks": 60000, "minTemp": 2, "pathCost": 150, "tree": true, "woodYield": 22, "spread": 2, "workTicks": 140, "sprite": "core.sprite.tree.broadleaf" },
+  { "id": "core.plant.pine",       "kind": "plant", "label": "pine tree",   "color": "#2a4630", "glyph": "tree",  "growTicks": 80000, "minTemp": -8, "pathCost": 150, "tree": true, "woodYield": 26, "spread": 2, "minFertility": 30, "workTicks": 170, "sprite": "core.sprite.tree.pine" },
+  { "id": "core.plant.teak",       "kind": "plant", "label": "teak tree",   "color": "#2e5c29", "glyph": "tree",  "growTicks": 80000, "minTemp": 8, "pathCost": 150, "tree": true, "woodYield": 32, "spread": 3, "workTicks": 200, "sprite": "core.sprite.tree.broadleaf" },
+  { "id": "core.plant.cactus",     "kind": "plant", "label": "saguaro",     "color": "#5f8a4c", "glyph": "cactus", "growTicks": 100000, "minTemp": 0, "maxTemp": 55, "pathCost": 150, "tree": true, "woodYield": 10, "spread": 1, "minFertility": 5, "workTicks": 120 },
+  { "id": "core.plant.rice",       "kind": "plant", "label": "rice",        "color": "#b4c65a", "glyph": "crop",  "growTicks": 18000, "minTemp": 4, "sowable": true, "minFertility": 60,
+    "harvestItem": "core.item.rice", "harvestYield": 8, "harvestMin": 100, "workTicks": 40, "nutrition": 250 },
+  { "id": "core.plant.potato",     "kind": "plant", "label": "potato",      "color": "#8f9b4c", "glyph": "crop",  "growTicks": 26000, "minTemp": 2, "sowable": true, "minFertility": 30,
+    "harvestItem": "core.item.potato", "harvestYield": 11, "harvestMin": 100, "workTicks": 50, "nutrition": 250 },
+  { "id": "core.plant.cotton",     "kind": "plant", "label": "cotton",      "color": "#9fae7a", "glyph": "crop",  "growTicks": 22000, "minTemp": 6, "sowable": true, "minFertility": 40,
+    "harvestItem": "core.item.cloth", "harvestYield": 10, "harvestMin": 100, "workTicks": 50 }
+]

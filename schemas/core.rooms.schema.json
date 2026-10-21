@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/core.rooms.schema.json",
+  "title": "core.rooms",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "autoRoofMax": {
+      "type": "integer",
+      "default": 300
+    },
+    "indoorPercent": {
+      "type": "integer",
+      "default": 75
+    },
+    "roofSupport": {
+      "type": "integer",
+      "default": 6
+    },
+    "builtRoof": {
+      "type": "string",
+      "default": "core.roof.built",
+      "x-ref": "roof"
+    },
+    "rockRoof": {
+      "type": "string",
+      "default": "core.roof.rock",
+      "x-ref": "roof"
+    },
+    "id": {
+      "const": "core.rooms"
+    },
+    "kind": {
+      "type": "string",
+      "description": "optional; read by id"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id"
+  ]
+}

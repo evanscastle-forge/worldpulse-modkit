@@ -1,0 +1,7 @@
+[
+  { "id": "core.colonist", "moveTicks": 6, "carryCapacity": 75, "foodDecay": 7, "restDecay": 6, "bedRest": 30, "groundRest": 18, "eatTicks": 40,
+    "maxHealth": 100, "damage": 14, "attackTicks": 50, "range": 10,
+    "baseMood": 55, "minorBreak": 25, "majorBreak": 10, "comfortMin": 12, "comfortMax": 30 },
+  { "id": "core.names", "names": ["Ana", "Bo", "Cyrus", "Dara", "Emeka", "Freya", "Gus", "Hana", "Ivo", "Juno", "Kai", "Lena", "Milo", "Nia",
+      "Oskar", "Pia", "Quinn", "Rosa", "Sami", "Tova", "Ugo", "Vera", "Wren", "Xia", "Yusuf", "Zora"] }
+]

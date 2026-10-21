@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/roof.schema.json",
+  "title": "roof",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "color": {
+      "type": "string",
+      "default": "#ff00ff"
+    },
+    "natural": {
+      "type": "boolean",
+      "default": false
+    },
+    "workTicks": {
+      "type": "integer",
+      "default": 60
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "kind": {
+      "const": "roof"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind"
+  ]
+}

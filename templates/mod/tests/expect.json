@@ -1,0 +1,7 @@
+{
+  "days": 10,
+  "seeds": [1, 2, 3],
+  "expect": [
+    { "metric": "deaths", "max": 0 }
+  ]
+}

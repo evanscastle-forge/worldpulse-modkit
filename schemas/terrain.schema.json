@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/terrain.schema.json",
+  "title": "terrain",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "color": {
+      "type": "string",
+      "default": "#ff00ff"
+    },
+    "pathCost": {
+      "type": "integer",
+      "default": 100
+    },
+    "walkable": {
+      "type": "boolean",
+      "default": true
+    },
+    "fertility": {
+      "type": "integer",
+      "default": 0
+    },
+    "buildable": {
+      "type": "boolean",
+      "default": true
+    },
+    "water": {
+      "type": "boolean",
+      "default": false
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "kind": {
+      "const": "terrain"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind"
+  ]
+}

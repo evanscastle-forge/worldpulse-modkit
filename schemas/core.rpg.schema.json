@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/core.rpg.schema.json",
+  "title": "core.rpg",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "attributes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attributeInfo"
+      },
+      "x-nullable": true
+    },
+    "skills": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        }
+      },
+      "x-nullable": true
+    },
+    "aptitudeMax": {
+      "type": "integer",
+      "default": 8
+    },
+    "levelCap": {
+      "type": "integer",
+      "default": 20
+    },
+    "xpBase": {
+      "type": "integer",
+      "default": 1500
+    },
+    "xpGrowth": {
+      "type": "integer",
+      "default": 150
+    },
+    "intLearn": {
+      "type": "integer",
+      "default": 6
+    },
+    "conHealth": {
+      "type": "integer",
+      "default": 5
+    },
+    "wisBreak": {
+      "type": "integer",
+      "default": 1
+    },
+    "chaRadius": {
+      "type": "integer",
+      "default": 6
+    },
+    "chaHigh": {
+      "type": "integer",
+      "default": 15
+    },
+    "chaLow": {
+      "type": "integer",
+      "default": 6
+    },
+    "id": {
+      "const": "core.rpg"
+    },
+    "kind": {
+      "type": "string",
+      "description": "optional; read by id"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id"
+  ],
+  "$defs": {
+    "attributeInfo": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "abbrev": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string",
+          "default": "#ffffff"
+        },
+        "icon": {
+          "type": "string",
+          "x-nullable": true,
+          "x-ref": "sprite",
+          "x-size": 8
+        }
+      },
+      "patternProperties": {
+        "^_": {},
+        "^\\$schema$": {}
+      },
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "label",
+        "abbrev"
+      ]
+    }
+  }
+}

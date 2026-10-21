@@ -1,0 +1,24 @@
+[
+  { "id": "core.building.granite",   "kind": "building", "label": "granite",   "color": "#5c5856", "glyph": "rock", "natural": true, "mineItem": "core.item.stone", "mineYield": 6, "workTicks": 240 },
+  { "id": "core.building.limestone", "kind": "building", "label": "limestone", "color": "#8a8473", "glyph": "rock", "natural": true, "mineItem": "core.item.stone", "mineYield": 6, "workTicks": 200 },
+  { "id": "core.building.sandstone", "kind": "building", "label": "sandstone", "color": "#9e8466", "glyph": "rock", "natural": true, "mineItem": "core.item.stone", "mineYield": 6, "workTicks": 180 },
+  { "id": "core.building.marble",    "kind": "building", "label": "marble",    "color": "#b3b0aa", "glyph": "rock", "natural": true, "mineItem": "core.item.stone", "mineYield": 6, "workTicks": 220 },
+  { "id": "core.building.steel_ore", "kind": "building", "label": "compacted steel", "color": "#5f6f7c", "glyph": "ore", "natural": true, "ore": true,
+    "mineItem": "core.item.steel", "mineYield": 15, "workTicks": 320 },
+
+  { "id": "core.building.wall_wood",  "kind": "building", "label": "wood wall",  "color": "#8a6942", "glyph": "wall", "wall": true, "costItem": "core.item.wood",  "costCount": 5, "workTicks": 100 },
+  { "id": "core.building.wall_stone", "kind": "building", "label": "stone wall", "color": "#76716b", "glyph": "wall", "wall": true, "costItem": "core.item.stone", "costCount": 5, "workTicks": 180 },
+  { "id": "core.building.door",       "kind": "building", "label": "door",       "color": "#a57d4c", "glyph": "door", "passable": true, "pathCost": 150, "use": "door",
+    "costItem": "core.item.wood", "costCount": 6, "workTicks": 120, "sprite": "core.sprite.building.door" },
+  { "id": "core.building.bed",        "kind": "building", "label": "bed",        "color": "#4a6896", "glyph": "bed",  "passable": true, "pathCost": 150, "use": "bed",
+    "costItem": "core.item.wood", "costCount": 30, "workTicks": 200, "sprite": "core.sprite.building.bed" },
+  { "id": "core.building.campfire",   "kind": "building", "label": "campfire",   "color": "#d9792b", "glyph": "campfire", "use": "campfire",
+    "costItem": "core.item.wood", "costCount": 20, "workTicks": 100, "heat": 15, "heatTarget": 21,
+    "product": "core.item.meal", "productCount": 1, "ingredients": 10, "productTicks": 200, "sprite": "core.sprite.building.campfire" },
+  { "id": "core.building.fireplace",  "kind": "building", "label": "fireplace",  "color": "#8e7766", "glyph": "fireplace", "use": "heater",
+    "costItem": "core.item.stone", "costCount": 25, "workTicks": 200, "heat": 60, "heatTarget": 21, "sprite": "core.sprite.building.fireplace" },
+  { "id": "core.building.cooler",     "kind": "building", "label": "passive cooler", "color": "#6f9fb8", "glyph": "cooler", "use": "cooler",
+    "costItem": "core.item.wood", "costCount": 30, "workTicks": 150, "heat": -40, "heatTarget": 17, "sprite": "core.sprite.building.cooler" },
+  { "id": "core.building.tailor_bench", "kind": "building", "label": "tailor bench", "color": "#9b7a4e", "glyph": "bench", "use": "craft",
+    "costItem": "core.item.wood", "costCount": 50, "workTicks": 200, "sprite": "core.sprite.building.tailor_bench" }
+]

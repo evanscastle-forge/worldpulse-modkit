@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/core.colonist.schema.json",
+  "title": "core.colonist",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "moveTicks": {
+      "type": "integer",
+      "default": 6
+    },
+    "carryCapacity": {
+      "type": "integer",
+      "default": 75
+    },
+    "foodDecay": {
+      "type": "integer",
+      "default": 7
+    },
+    "restDecay": {
+      "type": "integer",
+      "default": 6
+    },
+    "bedRest": {
+      "type": "integer",
+      "default": 30
+    },
+    "groundRest": {
+      "type": "integer",
+      "default": 18
+    },
+    "eatTicks": {
+      "type": "integer",
+      "default": 40
+    },
+    "maxHealth": {
+      "type": "integer",
+      "default": 100
+    },
+    "damage": {
+      "type": "integer",
+      "default": 11
+    },
+    "attackTicks": {
+      "type": "integer",
+      "default": 60
+    },
+    "range": {
+      "type": "integer",
+      "default": 10
+    },
+    "baseMood": {
+      "type": "integer",
+      "default": 55
+    },
+    "minorBreak": {
+      "type": "integer",
+      "default": 25
+    },
+    "majorBreak": {
+      "type": "integer",
+      "default": 10
+    },
+    "comfortMin": {
+      "type": "integer",
+      "default": 12
+    },
+    "comfortMax": {
+      "type": "integer",
+      "default": 30
+    },
+    "id": {
+      "const": "core.colonist"
+    },
+    "kind": {
+      "type": "string",
+      "description": "optional; read by id"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id"
+  ]
+}

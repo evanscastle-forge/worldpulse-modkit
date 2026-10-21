@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/mod.schema.json",
+  "title": "mod.json",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "default": ""
+    },
+    "version": {
+      "type": "string",
+      "default": "0.1.0"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-nullable": true
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "modApi": {
+      "type": "integer",
+      "default": 1
+    },
+    "loadAfter": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-nullable": true
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "x-nullable": true
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id"
+  ]
+}

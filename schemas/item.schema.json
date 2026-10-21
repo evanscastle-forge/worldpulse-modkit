@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/item.schema.json",
+  "title": "item",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "color": {
+      "type": "string",
+      "default": "#ff00ff"
+    },
+    "stackLimit": {
+      "type": "integer",
+      "default": 75
+    },
+    "nutrition": {
+      "type": "integer",
+      "default": 0
+    },
+    "raw": {
+      "type": "boolean",
+      "default": false
+    },
+    "meat": {
+      "type": "boolean",
+      "default": false
+    },
+    "slot": {
+      "type": "string",
+      "x-nullable": true,
+      "enum": [
+        "head",
+        "torso",
+        "legs",
+        "outer"
+      ]
+    },
+    "cold": {
+      "type": "integer",
+      "default": 0
+    },
+    "heat": {
+      "type": "integer",
+      "default": 0
+    },
+    "armor": {
+      "type": "integer",
+      "default": 0
+    },
+    "recipe": {
+      "$ref": "#/$defs/recipe",
+      "x-nullable": true
+    },
+    "keep": {
+      "type": "integer",
+      "default": 0
+    },
+    "sprite": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "sprite",
+      "x-size": 16
+    },
+    "layer": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "sprite",
+      "x-size": 16
+    },
+    "portrait": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "sprite",
+      "x-size": 32
+    },
+    "hidesHair": {
+      "type": "boolean",
+      "default": false
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "kind": {
+      "const": "item"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind"
+  ],
+  "$defs": {
+    "recipe": {
+      "type": "object",
+      "properties": {
+        "station": {
+          "type": "string",
+          "x-ref": "building"
+        },
+        "item": {
+          "type": "string",
+          "x-ref": "item"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "ticks": {
+          "type": "integer",
+          "default": 600
+        }
+      },
+      "patternProperties": {
+        "^_": {},
+        "^\\$schema$": {}
+      },
+      "additionalProperties": false,
+      "required": [
+        "station",
+        "item",
+        "count"
+      ]
+    }
+  }
+}

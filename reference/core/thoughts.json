@@ -1,0 +1,25 @@
+[
+  { "id": "core.thought.ate_raw",        "kind": "thought", "label": "ate raw food",        "mood": -5,  "ticks": 6000 },
+  { "id": "core.thought.ate_meal",       "kind": "thought", "label": "ate a cooked meal",   "mood": 3,   "ticks": 6000 },
+  { "id": "core.thought.slept_ground",   "kind": "thought", "label": "slept on the ground", "mood": -4,  "ticks": 6000 },
+  { "id": "core.thought.slept_outside",  "kind": "thought", "label": "slept outside",       "mood": -4,  "ticks": 6000 },
+  { "id": "core.thought.slept_cold",     "kind": "thought", "label": "slept in the cold",   "mood": -4,  "ticks": 6000 },
+  { "id": "core.thought.slept_bedroom",  "kind": "thought", "label": "slept in own bedroom", "mood": 5,  "ticks": 6000 },
+  { "id": "core.thought.slept_barracks", "kind": "thought", "label": "slept in a barracks", "mood": -2,  "ticks": 6000 },
+  { "id": "core.thought.colonist_died",  "kind": "thought", "label": "a colonist died",     "mood": -10, "ticks": 18000 },
+  { "id": "core.thought.catharsis",      "kind": "thought", "label": "catharsis",           "mood": 10,  "ticks": 9000 },
+
+  { "id": "core.thought.hungry",         "kind": "thought", "label": "hungry",              "mood": -6,  "ticks": 120 },
+  { "id": "core.thought.starving",       "kind": "thought", "label": "starving",            "mood": -15, "ticks": 120 },
+  { "id": "core.thought.tired",          "kind": "thought", "label": "tired",               "mood": -4,  "ticks": 120 },
+  { "id": "core.thought.exhausted",      "kind": "thought", "label": "exhausted",           "mood": -10, "ticks": 120 },
+  { "id": "core.thought.cold",           "kind": "thought", "label": "cold",                "mood": -5,  "ticks": 300 },
+  { "id": "core.thought.freezing",       "kind": "thought", "label": "freezing",            "mood": -12, "ticks": 300 },
+  { "id": "core.thought.hot",            "kind": "thought", "label": "hot",                 "mood": -5,  "ticks": 300 },
+  { "id": "core.thought.sweltering",     "kind": "thought", "label": "sweltering",          "mood": -12, "ticks": 300 },
+  { "id": "core.thought.soaked",         "kind": "thought", "label": "soaked",              "mood": -3,  "ticks": 600 },
+  { "id": "core.thought.pain",           "kind": "thought", "label": "in pain",             "mood": -6,  "ticks": 300 },
+  { "id": "core.thought.severe_pain",    "kind": "thought", "label": "in severe pain",      "mood": -15, "ticks": 300 },
+  { "id": "core.thought.pleasant_company", "kind": "thought", "label": "charming company", "mood": 4,  "ticks": 600 },
+  { "id": "core.thought.grating_company",  "kind": "thought", "label": "grating company",  "mood": -3, "ticks": 600 }
+]

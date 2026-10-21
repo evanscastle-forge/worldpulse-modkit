@@ -1,0 +1,33 @@
+[
+  { "id": "core.rpg", "kind": "rpg",
+    "attributes": [
+      { "key": "str", "label": "Strength",     "abbrev": "STR", "color": "#e0724f", "icon": "core.sprite.icon.str" },
+      { "key": "dex", "label": "Dexterity",    "abbrev": "DEX", "color": "#7fd18b", "icon": "core.sprite.icon.dex" },
+      { "key": "con", "label": "Constitution", "abbrev": "CON", "color": "#e3b04b", "icon": "core.sprite.icon.con" },
+      { "key": "int", "label": "Intelligence", "abbrev": "INT", "color": "#6fb7ff", "icon": "core.sprite.icon.int" },
+      { "key": "wis", "label": "Wisdom",       "abbrev": "WIS", "color": "#b48cf2", "icon": "core.sprite.icon.wis" },
+      { "key": "cha", "label": "Charisma",     "abbrev": "CHA", "color": "#f28cc4", "icon": "core.sprite.icon.cha" }
+    ],
+    "skills": {
+      "cook":      { "int": 1, "dex": 1, "wis": 1 },
+      "construct": { "str": 1, "dex": 1, "int": 1 },
+      "grow":      { "wis": 2, "con": 1 },
+      "hunt":      { "dex": 2, "wis": 1 },
+      "mine":      { "str": 2, "con": 1 },
+      "plantcut":  { "str": 1, "con": 1 },
+      "craft":     { "dex": 2, "int": 1 },
+      "haul":      { "str": 2, "con": 1 }
+    },
+    "aptitudeMax": 8, "levelCap": 20, "xpBase": 1500, "xpGrowth": 150,
+    "intLearn": 6, "conHealth": 5, "wisBreak": 1, "chaRadius": 6, "chaHigh": 15, "chaLow": 6 },
+  { "id": "core.looks", "kind": "looks",
+    "skins": ["#f3d2b3", "#e2b48f", "#c68e62", "#9c6a43", "#6e4a2f", "#4a3121"],
+    "hairs": ["#2a211c", "#4b3426", "#7a4f2c", "#b8834a", "#e0c27a", "#a8321e", "#9a9a9a", "#e8e8e8"],
+    "styles": [
+      { "id": "short",  "sprite": "core.sprite.hair.short",  "portrait": "core.sprite.portrait.hair.short" },
+      { "id": "long",   "sprite": "core.sprite.hair.long",   "portrait": "core.sprite.portrait.hair.long" },
+      { "id": "bun",    "sprite": "core.sprite.hair.bun",    "portrait": "core.sprite.portrait.hair.bun" },
+      { "id": "shaved", "sprite": "core.sprite.hair.shaved", "portrait": "core.sprite.portrait.hair.shaved" }
+    ],
+    "minAge": 18, "maxAge": 60, "body": "core.sprite.body", "head": "core.sprite.portrait.head" }
+]

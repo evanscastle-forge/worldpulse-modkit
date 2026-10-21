@@ -1,0 +1,10 @@
+# WorldPulse Modkit
+
+> Make mods for the colony sim WorldPulse with any AI assistant. Mods are JSON defs and text pixel art.
+
+- [Small bundle](bundle/modding-small.md): rules, field tables and examples in ~6k tokens, for small models
+- [Full bundle](bundle/modding-full.md): every doc, workflow and role card in one file
+- [Agent instructions](AGENTS.md): the rules an assistant must follow
+- [Concepts](docs/concepts.md): ids, kinds, load order, overriding, units
+- [Field reference](docs/api/): every field of every def kind
+- [Limits](docs/limits.md): what needs a game update

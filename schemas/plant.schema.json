@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/plant.schema.json",
+  "title": "plant",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "color": {
+      "type": "string",
+      "default": "#ff00ff"
+    },
+    "glyph": {
+      "type": "string",
+      "default": "grass"
+    },
+    "growTicks": {
+      "type": "integer",
+      "default": 30000
+    },
+    "minTemp": {
+      "type": "integer",
+      "default": 1
+    },
+    "maxTemp": {
+      "type": "integer",
+      "default": 45
+    },
+    "tree": {
+      "type": "boolean",
+      "default": false
+    },
+    "woodYield": {
+      "type": "integer",
+      "default": 0
+    },
+    "woodItem": {
+      "type": "string",
+      "default": "core.item.wood",
+      "x-ref": "item"
+    },
+    "harvestItem": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "item"
+    },
+    "harvestYield": {
+      "type": "integer",
+      "default": 0
+    },
+    "harvestMin": {
+      "type": "integer",
+      "default": 65
+    },
+    "regrowTo": {
+      "type": "integer",
+      "default": 0
+    },
+    "sowable": {
+      "type": "boolean",
+      "default": false
+    },
+    "minFertility": {
+      "type": "integer",
+      "default": 50
+    },
+    "pathCost": {
+      "type": "integer",
+      "default": 100
+    },
+    "spread": {
+      "type": "integer",
+      "default": 0
+    },
+    "workTicks": {
+      "type": "integer",
+      "default": 60
+    },
+    "nutrition": {
+      "type": "integer",
+      "default": 0
+    },
+    "sprite": {
+      "type": "string",
+      "x-nullable": true,
+      "x-ref": "sprite",
+      "x-size": 16
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "kind": {
+      "const": "plant"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind"
+  ]
+}

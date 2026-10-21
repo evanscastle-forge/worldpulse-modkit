@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldpulse.game/modapi/1/biome.schema.json",
+  "title": "biome",
+  "x-modApi": 1,
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "color": {
+      "type": "string",
+      "default": "#ff00ff"
+    },
+    "glyph": {
+      "type": "string",
+      "default": "?"
+    },
+    "water": {
+      "type": "boolean",
+      "default": false
+    },
+    "minTemp": {
+      "type": "integer",
+      "default": -100
+    },
+    "maxTemp": {
+      "type": "integer",
+      "default": 100
+    },
+    "minRain": {
+      "type": "integer",
+      "default": 0
+    },
+    "maxRain": {
+      "type": "integer",
+      "default": 100000
+    },
+    "priority": {
+      "type": "integer",
+      "default": 0
+    },
+    "habitability": {
+      "type": "integer",
+      "default": 50
+    },
+    "plantDensity": {
+      "type": "integer",
+      "default": 400
+    },
+    "waterFraction": {
+      "type": "integer",
+      "default": 30
+    },
+    "marshFraction": {
+      "type": "integer",
+      "default": 20
+    },
+    "terrain": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/terrainBand"
+      },
+      "x-nullable": true
+    },
+    "plants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/weighted"
+      },
+      "x-nullable": true,
+      "x-ref": "plant"
+    },
+    "animalDensity": {
+      "type": "integer",
+      "default": 0
+    },
+    "animals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/weighted"
+      },
+      "x-nullable": true,
+      "x-ref": "animal"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)+$"
+    },
+    "kind": {
+      "const": "biome"
+    }
+  },
+  "patternProperties": {
+    "^_": {},
+    "^\\$schema$": {}
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind"
+  ],
+  "$defs": {
+    "terrainBand": {
+      "type": "object",
+      "properties": {
+        "terrain": {
+          "type": "string",
+          "x-ref": "terrain"
+        },
+        "upTo": {
+          "type": "integer"
+        }
+      },
+      "patternProperties": {
+        "^_": {},
+        "^\\$schema$": {}
+      },
+      "additionalProperties": false,
+      "required": [
+        "terrain",
+        "upTo"
+      ]
+    },
+    "weighted": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "integer"
+        }
+      },
+      "patternProperties": {
+        "^_": {},
+        "^\\$schema$": {}
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "weight"
+      ]
+    }
+  }
+}

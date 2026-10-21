@@ -1,0 +1,68 @@
+[
+  { "id": "core.sprite.icon.str", "kind": "sprite", "size": 8, "palette": {"k": "#1b1f24", "m": "$main", "M": "$main-"},
+    "rows": [
+      "..kk....",
+      ".kmmk...",
+      ".kmmk...",
+      ".kmmkkk.",
+      ".kmmmmmk",
+      ".kmmmmMk",
+      "..kmmMk.",
+      "...kkk.."
+    ] },
+  { "id": "core.sprite.icon.dex", "kind": "sprite", "size": 8, "palette": {"k": "#1b1f24", "m": "$main", "M": "$main-"},
+    "rows": [
+      "......kk",
+      ".....kmk",
+      "....kmk.",
+      "...kmk..",
+      "..kmk...",
+      ".kMk....",
+      "kMk.....",
+      "kk......"
+    ] },
+  { "id": "core.sprite.icon.con", "kind": "sprite", "size": 8, "palette": {"k": "#1b1f24", "m": "$main", "M": "$main-", "w": "#ffffff"},
+    "rows": [
+      ".kk..kk.",
+      "kmmkkmmk",
+      "kmwmmmmk",
+      "kmmmmmMk",
+      ".kmmmMk.",
+      "..kmMk..",
+      "...kk...",
+      "........"
+    ] },
+  { "id": "core.sprite.icon.int", "kind": "sprite", "size": 8, "palette": {"k": "#1b1f24", "m": "$main", "M": "$main-", "w": "#ffffff"},
+    "rows": [
+      "kkkkkkk.",
+      "kwwkmmmk",
+      "kwwkmMmk",
+      "kwwkmmmk",
+      "kwwkmMmk",
+      "kwwkmmmk",
+      "kkkkkkkk",
+      "........"
+    ] },
+  { "id": "core.sprite.icon.wis", "kind": "sprite", "size": 8, "palette": {"k": "#1b1f24", "m": "$main", "M": "$main-", "w": "#ffffff"},
+    "rows": [
+      "........",
+      "..kkkk..",
+      ".kwwwwk.",
+      "kwwmMwwk",
+      "kwwMkwwk",
+      ".kwwwwk.",
+      "..kkkk..",
+      "........"
+    ] },
+  { "id": "core.sprite.icon.cha", "kind": "sprite", "size": 8, "palette": {"k": "#1b1f24", "m": "$main"},
+    "rows": [
+      "...kk...",
+      "...km...",
+      "kkkmmkkk",
+      ".kmmmmk.",
+      "..kmmk..",
+      ".kmkkmk.",
+      ".kk..kk.",
+      "........"
+    ] }
+]

@@ -1,0 +1,13 @@
+{
+  "id": "core.worldgen",
+  "globeFrequency": 16, "oceanPercent": 45,
+  "mapRadius": 64, "bandDepth": 7, "colonists": 3,
+  "startingItems": [
+    { "item": "core.item.meal", "count": 30 },
+    { "item": "core.item.wood", "count": 150 },
+    { "item": "core.item.steel", "count": 50 },
+    { "item": "core.item.berries", "count": 40 },
+    { "item": "core.item.cloth", "count": 50 }
+  ],
+  "startingApparel": ["core.item.tunic", "core.item.trousers"]
+}
