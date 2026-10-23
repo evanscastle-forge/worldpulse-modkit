@@ -6,6 +6,7 @@ mod API it matches are in `game.json`.
 
 ## Unreleased
 
+- The repo is now `modkit-worldpulse` on GitHub (was `worldpulse-modkit`; the old URL redirects): the clone line in `README.md` and the bundles uses the new name.
 - `VERSION`, this changelog, and maintainer skills in `.claude/skills/` (`sync-from-game`, `release`).
 
 ## 0.1.0 - 2026-10-21
